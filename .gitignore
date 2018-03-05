@@ -10,3 +10,5 @@ gendocs/_build/
 secret.json
 kubeconfig.txt
 .kdev4/
+YPCConfig.py
+YPCdaemon.py
