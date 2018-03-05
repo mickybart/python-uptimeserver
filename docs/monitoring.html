@@ -1,0 +1,2543 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>monitoring package &#8212; monitoring 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to monitoring’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to monitoring’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">monitoring 1.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="monitoring-package">
+<h1>monitoring package<a class="headerlink" href="#monitoring-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-monitoring.config">
+<span id="monitoring-config-module"></span><h2>monitoring.config module<a class="headerlink" href="#module-monitoring.config" title="Permalink to this headline">¶</a></h2>
+<p>config module</p>
+<p>Permit to manage global configurations</p>
+<dl class="class">
+<dt id="monitoring.config.Config">
+<em class="property">class </em><code class="descclassname">monitoring.config.</code><code class="descname">Config</code><span class="sig-paren">(</span><em>secret=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.config.Config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Configuration for Monitoring and sub-modules</p>
+<p>This class can be overriden and so adapted by every compagnies to
+set different policy about what to monitor and in which way.</p>
+<dl class="docutils">
+<dt>You should check this main function :</dt>
+<dd>configure</dd>
+</dl>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><strong>secret</strong> (<em>json</em>) – json with all secrets and configuration used by the config.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.config.Config.configure">
+<code class="descname">configure</code><span class="sig-paren">(</span><em>server</em>, <em>monitoring</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.config.Config.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure the server and monitoring</p>
+<p>eg: This is where the monitoring of services will be set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>server</strong> (<a class="reference internal" href="#monitoring.server.Server" title="monitoring.server.Server"><em>Server</em></a>) – The server</li>
+<li><strong>monitoring</strong> (<a class="reference internal" href="#monitoring.monitoring.ServicesMonitoring" title="monitoring.monitoring.ServicesMonitoring"><em>ServicesMonitoring</em></a>) – The monitoring orchestrator</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.config.Config.default_env">
+<code class="descname">default_env</code><em class="property"> = 'local'</em><a class="headerlink" href="#monitoring.config.Config.default_env" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monitoring.config.Config.getconfig">
+<code class="descname">getconfig</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.config.Config.getconfig" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monitoring.config.Config.getconsolidations">
+<code class="descname">getconsolidations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.config.Config.getconsolidations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monitoring.config.Config.getgeneric">
+<code class="descname">getgeneric</code><span class="sig-paren">(</span><em>section</em>, <em>key</em>, <em>default</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.config.Config.getgeneric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monitoring.config.Config.getmonitoring">
+<code class="descname">getmonitoring</code><span class="sig-paren">(</span><em>key=None</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.config.Config.getmonitoring" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monitoring.config.Config.getserver">
+<code class="descname">getserver</code><span class="sig-paren">(</span><em>key=None</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.config.Config.getserver" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monitoring.config.Config.getstorage">
+<code class="descname">getstorage</code><span class="sig-paren">(</span><em>key=None</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.config.Config.getstorage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monitoring.config.Config.load_json">
+<code class="descname">load_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.config.Config.load_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load JSON file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>json_file</strong> (<em>str</em>) – filename of a json file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">content of the file</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.config.Config.os_env">
+<code class="descname">os_env</code><em class="property"> = 'UPTIME_ENV'</em><a class="headerlink" href="#monitoring.config.Config.os_env" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.config.Config.providers">
+<code class="descname">providers</code><em class="property"> = []</em><a class="headerlink" href="#monitoring.config.Config.providers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.config.Config.secret">
+<code class="descname">secret</code><em class="property"> = {'env': {'local': {'storage': {'backend': 'MongoStorage', 'uri': 'mongodb://localhost:27017', 'db': 'cloud-uptime-local'}, 'server': {'with_consolidation': True}, 'consolidations': {'sla': {}, 'status': {'filter': {}, 'down_since': 600}}, 'monitoring': {'max_services': 15, 'check_every_seconds': 60, 'fast_retry_every_seconds': 5}}}}</em><a class="headerlink" href="#monitoring.config.Config.secret" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.config.Config.services">
+<code class="descname">services</code><em class="property"> = []</em><a class="headerlink" href="#monitoring.config.Config.services" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-monitoring.consolidation">
+<span id="monitoring-consolidation-module"></span><h2>monitoring.consolidation module<a class="headerlink" href="#module-monitoring.consolidation" title="Permalink to this headline">¶</a></h2>
+<p>Consolidation module</p>
+<p>The purpose is to compute stored raw data from monitoring to transform them.</p>
+<dl class="class">
+<dt id="monitoring.consolidation.Consolidation">
+<em class="property">class </em><code class="descclassname">monitoring.consolidation.</code><code class="descname">Consolidation</code><span class="sig-paren">(</span><em>storage</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.Consolidation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>Base class for Consolidation implementation</p>
+<p>Inherit class need to know and to work with the storage object.</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage</strong> (<a class="reference internal" href="#monitoring.storage.Storage" title="monitoring.storage.Storage"><em>Storage</em></a>) – An instance of storage backend</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.consolidation.Consolidation.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.Consolidation.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the consolidation</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.Consolidation.stopConsolidation">
+<code class="descname">stopConsolidation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.Consolidation.stopConsolidation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop the consolidation</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.consolidation.ConsolidationSLA">
+<em class="property">class </em><code class="descclassname">monitoring.consolidation.</code><code class="descname">ConsolidationSLA</code><span class="sig-paren">(</span><em>storage</em>, <em>waiting_seconds_between_batch=300</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationSLA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monitoring.consolidation.Consolidation" title="monitoring.consolidation.Consolidation"><code class="xref py py-class docutils literal notranslate"><span class="pre">monitoring.consolidation.Consolidation</span></code></a></p>
+<p>Base class for SLA Consolidation implementation</p>
+<p>self.date_* indicate the new consolidation starting point.
+that means that when we reach this new consolidation starting point, we can consolidate the previous period as
+we are starting a new one</p>
+<p>self.wip_date_* indicate the current start date to compute</p>
+<p>Inherit class need to implement:</p>
+<p>def hook_daily_sla(self, service, sla)
+def hook_weekly_sla(self, service, sla)
+def hook_monthly_sla(self, service, sla)
+def daily_sla_done(self)
+def weekly_sla_done(self)
+def monthly_sla_done(self)</p>
+<p>Those functions are used to store the sla or to notify that the daily/weekly/monthly compute is done</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage</strong> (<a class="reference internal" href="#monitoring.storage.Storage" title="monitoring.storage.Storage"><em>Storage</em></a>) – An instance of storage backend</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>waiting_seconds_between_batch</strong> (<em>int</em>) – Number of seconds to wait between 2 workload</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.consolidation.ConsolidationSLA.compute_daily_sla">
+<code class="descname">compute_daily_sla</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationSLA.compute_daily_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the daily SLA</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.ConsolidationSLA.compute_monthly_sla">
+<code class="descname">compute_monthly_sla</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationSLA.compute_monthly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the Monthly SLA</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.ConsolidationSLA.compute_weekly_sla">
+<code class="descname">compute_weekly_sla</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationSLA.compute_weekly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the weekly SLA</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.ConsolidationSLA.next_date_daily_sla">
+<code class="descname">next_date_daily_sla</code><span class="sig-paren">(</span><em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationSLA.next_date_daily_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the next day from a specific date</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timestamp</strong> (<em>long</em>) – a specific date</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The next day</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">long</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.ConsolidationSLA.next_date_monthly_sla">
+<code class="descname">next_date_monthly_sla</code><span class="sig-paren">(</span><em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationSLA.next_date_monthly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the next month from a specific date</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timestamp</strong> (<em>long</em>) – a specific date</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The next month</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">long</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.ConsolidationSLA.next_date_weekly_sla">
+<code class="descname">next_date_weekly_sla</code><span class="sig-paren">(</span><em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationSLA.next_date_weekly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the next week from a specific date</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timestamp</strong> (<em>long</em>) – a specific date</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The next week</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">long</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.ConsolidationSLA.previous_date_daily_sla">
+<code class="descname">previous_date_daily_sla</code><span class="sig-paren">(</span><em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationSLA.previous_date_daily_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the previous day from a specific date</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timestamp</strong> (<em>long</em>) – a specific date</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The previous day</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">long</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.ConsolidationSLA.previous_date_monthly_sla">
+<code class="descname">previous_date_monthly_sla</code><span class="sig-paren">(</span><em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationSLA.previous_date_monthly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the previous month from a specific date</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timestamp</strong> (<em>long</em>) – a specific date</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The previous month</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">long</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.ConsolidationSLA.previous_date_weekly_sla">
+<code class="descname">previous_date_weekly_sla</code><span class="sig-paren">(</span><em>timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationSLA.previous_date_weekly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the previous week from a specific date</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timestamp</strong> (<em>long</em>) – a specific date</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The previous week</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">long</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.ConsolidationSLA.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationSLA.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute SLA</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.consolidation.ConsolidationStatus">
+<em class="property">class </em><code class="descclassname">monitoring.consolidation.</code><code class="descname">ConsolidationStatus</code><span class="sig-paren">(</span><em>storage</em>, <em>down_time_duration=600</em>, <em>waiting_seconds_between_batch=60</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monitoring.consolidation.Consolidation" title="monitoring.consolidation.Consolidation"><code class="xref py py-class docutils literal notranslate"><span class="pre">monitoring.consolidation.Consolidation</span></code></a></p>
+<p>Base class for Status Consolidation implementation</p>
+<p>Inherit class need to implement compute_status(self)</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>storage</strong> (<a class="reference internal" href="#monitoring.storage.Storage" title="monitoring.storage.Storage"><em>Storage</em></a>) – An instance of storage backend</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>down_time_duration</strong> (<em>int</em>) – number of second to consider a service as really down.</li>
+<li><strong>waiting_seconds_between_batch</strong> (<em>int</em>) – Number of seconds to wait between 2 workload</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.consolidation.ConsolidationStatus.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.ConsolidationStatus.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update services status</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.consolidation.MongoStorageConsolidationSLA">
+<em class="property">class </em><code class="descclassname">monitoring.consolidation.</code><code class="descname">MongoStorageConsolidationSLA</code><span class="sig-paren">(</span><em>storage</em>, <em>waiting_seconds_between_batch=300</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.MongoStorageConsolidationSLA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monitoring.consolidation.ConsolidationSLA" title="monitoring.consolidation.ConsolidationSLA"><code class="xref py py-class docutils literal notranslate"><span class="pre">monitoring.consolidation.ConsolidationSLA</span></code></a></p>
+<p>SLA Consolidation with MongoStorage Backend</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>storage</strong> (<a class="reference internal" href="#monitoring.storage.Storage" title="monitoring.storage.Storage"><em>Storage</em></a>) – An instance of storage backend</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>waiting_seconds_between_batch</strong> (<em>int</em>) – Number of seconds to wait between 2 workload</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.consolidation.MongoStorageConsolidationSLA.daily_sla_done">
+<code class="descname">daily_sla_done</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.MongoStorageConsolidationSLA.daily_sla_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Daily compute is done</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.MongoStorageConsolidationSLA.hook_daily_sla">
+<code class="descname">hook_daily_sla</code><span class="sig-paren">(</span><em>service</em>, <em>sla</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.MongoStorageConsolidationSLA.hook_daily_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook for daily SLA</p>
+<p>Insert on the DB the sla of the service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>service</strong> (<em>dict</em>) – service Document</li>
+<li><strong>sla</strong> (<em>float</em>) – 0.0-100.0 sla</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.MongoStorageConsolidationSLA.hook_monthly_sla">
+<code class="descname">hook_monthly_sla</code><span class="sig-paren">(</span><em>service</em>, <em>sla</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.MongoStorageConsolidationSLA.hook_monthly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook for Montlhy SLA</p>
+<p>Insert on the DB the sla of the service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>service</strong> (<em>dict</em>) – service Document</li>
+<li><strong>sla</strong> (<em>float</em>) – 0.0-100.0 sla</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.MongoStorageConsolidationSLA.hook_weekly_sla">
+<code class="descname">hook_weekly_sla</code><span class="sig-paren">(</span><em>service</em>, <em>sla</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.MongoStorageConsolidationSLA.hook_weekly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hook for weekly SLA</p>
+<p>Insert on the DB the sla of the service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>service</strong> (<em>dict</em>) – service Document</li>
+<li><strong>sla</strong> (<em>float</em>) – 0.0-100.0 sla</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.MongoStorageConsolidationSLA.monthly_sla_done">
+<code class="descname">monthly_sla_done</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.MongoStorageConsolidationSLA.monthly_sla_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Montlhy compute is done</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.consolidation.MongoStorageConsolidationSLA.weekly_sla_done">
+<code class="descname">weekly_sla_done</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.MongoStorageConsolidationSLA.weekly_sla_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Weekly compute is done</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.consolidation.MongoStorageConsolidationStatus">
+<em class="property">class </em><code class="descclassname">monitoring.consolidation.</code><code class="descname">MongoStorageConsolidationStatus</code><span class="sig-paren">(</span><em>storage</em>, <em>services_filter</em>, <em>down_time_duration=600</em>, <em>waiting_seconds_between_batch=60</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.MongoStorageConsolidationStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monitoring.consolidation.ConsolidationStatus" title="monitoring.consolidation.ConsolidationStatus"><code class="xref py py-class docutils literal notranslate"><span class="pre">monitoring.consolidation.ConsolidationStatus</span></code></a></p>
+<p>Status Consolidation with MongoStorage Backend</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>storage</strong> (<a class="reference internal" href="#monitoring.storage.Storage" title="monitoring.storage.Storage"><em>Storage</em></a>) – An instance of storage backend</li>
+<li><strong>services_filter</strong> (<em>dict</em>) – Filter which services need to expose a status</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>down_time_duration</strong> (<em>int</em>) – number of second to consider a service as really down.</li>
+<li><strong>waiting_seconds_between_batch</strong> (<em>int</em>) – Number of seconds to wait between 2 workload</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.consolidation.MongoStorageConsolidationStatus.compute_status">
+<code class="descname">compute_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.consolidation.MongoStorageConsolidationStatus.compute_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute status</p>
+<p>Update the status for some services to calculate which ones are down since more than “down_time_duration”</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-monitoring.helper">
+<span id="monitoring-helper-module"></span><h2>monitoring.helper module<a class="headerlink" href="#module-monitoring.helper" title="Permalink to this headline">¶</a></h2>
+<p>Helper module</p>
+<p>Permit to provide some dev tools</p>
+<dl class="class">
+<dt id="monitoring.helper.DaemonHelper">
+<em class="property">class </em><code class="descclassname">monitoring.helper.</code><code class="descname">DaemonHelper</code><a class="headerlink" href="#monitoring.helper.DaemonHelper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="monitoring.helper.DaemonHelper.sleep_with_stop_switch">
+<code class="descname">sleep_with_stop_switch</code><span class="sig-paren">(</span><em>sleep_time</em>, <em>obj</em>, <em>sleep_inc=5</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.helper.DaemonHelper.sleep_with_stop_switch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sleep but wake up some time to check if a stop was requested</p>
+<p>If stop_switch is set to True, we will quit the sleep.</p>
+<p>This is useful for long sleep and thread not set as a daemon.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sleep_time</strong> (<em>int</em>) – duration in seconds</li>
+<li><strong>obj</strong> (<em>object</em>) – object with a stop_switch bool variable</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last"><strong>sleep_inc</strong> (<em>int</em>) – deep sleep time in seconds</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-monitoring.monitoring">
+<span id="monitoring-monitoring-module"></span><h2>monitoring.monitoring module<a class="headerlink" href="#module-monitoring.monitoring" title="Permalink to this headline">¶</a></h2>
+<p>Monitoring module</p>
+<p>Monitoring Manager, thread management etc.</p>
+<dl class="class">
+<dt id="monitoring.monitoring.ServicesMonitoring">
+<em class="property">class </em><code class="descclassname">monitoring.monitoring.</code><code class="descname">ServicesMonitoring</code><span class="sig-paren">(</span><em>backend_notify=None</em>, <em>max_services=10</em>, <em>check_every_seconds=300</em>, <em>fast_retry_every_seconds=3</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.ServicesMonitoring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ServicesMonitoring is the Monitoring manager.</p>
+<p>It permits to :
+- add/remove Services to the monitoring queue
+- have multiple providers of Services.
+- avoid redondant checks
+- manage tasks (load repartition per thread)
+- start/stop monitoring
+- Manage fast retry after a first service FAIL detection
+- Notify the backend to update a service status</p>
+<p>This is thread safe and so it is possible to add/remove services from any other threads.
+It is possible to add/delete services on the fly (running state or not)</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>backend_notify</strong> (<em>function address</em>) – Function that will be called to notify the backend of a “new” status</li>
+<li><strong>max_services</strong> (<em>int</em>) – Number of services to check per thread</li>
+<li><strong>check_every_seconds</strong> (<em>int</em>) – Check a service every X seconds</li>
+<li><strong>fast_retry_every_seconds</strong> (<em>int</em>) – Fast check retry when a service is going down after X seconds</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.monitoring.ServicesMonitoring.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>service</em>, <em>provider='default'</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.ServicesMonitoring.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a service to the Monitoring</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – a Service</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>provider</strong> (<em>String</em>) – Name of the provider</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.ServicesMonitoring.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>service</em>, <em>provider='default'</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.ServicesMonitoring.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a service to the Monitoring</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – a Service</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>provider</strong> (<em>String</em>) – Name of the provider</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.ServicesMonitoring.remove_delegation">
+<code class="descname">remove_delegation</code><span class="sig-paren">(</span><em>hook</em>, <em>extra</em>, <em>provider='default'</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.ServicesMonitoring.remove_delegation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove services based on the kook response</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>hook</strong> (<em>function</em>) – function that will decide to remove or not a service</li>
+<li><strong>extra</strong> (<em>object</em>) – should be an object readeable for the hook function. This permit to pass some information to the hook from the provider/service.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last"><strong>provider</strong> (<em>String</em>) – Name of the provider</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.ServicesMonitoring.remove_provider">
+<code class="descname">remove_provider</code><span class="sig-paren">(</span><em>provider='default'</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.ServicesMonitoring.remove_provider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all services of the provider to the Monitoring</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><strong>provider</strong> (<em>String</em>) – Name of the provider</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.ServicesMonitoring.startMonitoring">
+<code class="descname">startMonitoring</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.ServicesMonitoring.startMonitoring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sarting all tasks</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.ServicesMonitoring.stopMonitoring">
+<code class="descname">stopMonitoring</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.ServicesMonitoring.stopMonitoring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stopping all tasks</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.ServicesMonitoring.task_add">
+<code class="descname">task_add</code><span class="sig-paren">(</span><em>service</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.ServicesMonitoring.task_add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the service to a task</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – a Service</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.ServicesMonitoring.task_remove">
+<code class="descname">task_remove</code><span class="sig-paren">(</span><em>service</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.ServicesMonitoring.task_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the service from a task</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – a Service</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.monitoring.TaskMonitoring">
+<em class="property">class </em><code class="descclassname">monitoring.monitoring.</code><code class="descname">TaskMonitoring</code><span class="sig-paren">(</span><em>backend_notify=None</em>, <em>max_services=10</em>, <em>check_every_seconds=300</em>, <em>fast_retry_every_seconds=3</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.TaskMonitoring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>TaskMonitoring will check few services.</p>
+<p>A task is created and controlled only by the ServicesMonitoring.</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>backend_notify</strong> (<em>function address</em>) – Function that will be called to notify the backend of a “new” status</li>
+<li><strong>max_services</strong> (<em>int</em>) – Number of services to check per thread</li>
+<li><strong>check_every_seconds</strong> (<em>int</em>) – Check a service every X seconds</li>
+<li><strong>fast_retry_every_seconds</strong> (<em>int</em>) – Fast check retry when a service is going down after X seconds</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.monitoring.TaskMonitoring.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>service</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.TaskMonitoring.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – a Service</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Added (True) or Not enough room on the thread (False)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.TaskMonitoring.checkService">
+<code class="descname">checkService</code><span class="sig-paren">(</span><em>service</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.TaskMonitoring.checkService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check a service</p>
+<p>Permit to check a service, to retry a check, to notify the backend of a new state, …</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – a Service</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.TaskMonitoring.isEmpty">
+<code class="descname">isEmpty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.TaskMonitoring.isEmpty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is empty ?</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Empty queue (True) or not (False)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.TaskMonitoring.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><em>service</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.TaskMonitoring.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – a Service</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Service removed (True) or Not found (False)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.TaskMonitoring.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.TaskMonitoring.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the task</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.monitoring.TaskMonitoring.stopTask">
+<code class="descname">stopTask</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.monitoring.TaskMonitoring.stopTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request the task to stop</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-monitoring.providers">
+<span id="monitoring-providers-module"></span><h2>monitoring.providers module<a class="headerlink" href="#module-monitoring.providers" title="Permalink to this headline">¶</a></h2>
+<p>Providers module</p>
+<p>Providers permit to have an automatic way to create services based on a remote source.
+The provider will add/remove/modify services on the Monitoring with hook functions.</p>
+<p>The remote source can be Kubernetes (for IngressProvider), a file, an unix socket, else</p>
+<dl class="class">
+<dt id="monitoring.providers.IngressProvider">
+<em class="property">class </em><code class="descclassname">monitoring.providers.</code><code class="descname">IngressProvider</code><span class="sig-paren">(</span><em>name</em>, <em>context</em>, <em>monitoring</em>, <em>category=None</em>, <em>ingress_config=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monitoring.providers.Provider" title="monitoring.providers.Provider"><code class="xref py py-class docutils literal notranslate"><span class="pre">monitoring.providers.Provider</span></code></a></p>
+<p>Ingress Provider</p>
+<p>Permit to collect ingress events/entries to create Services to monitor.
+We are using Kubernetes in this provider.</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>String</em>) – unique name of the provider</li>
+<li><strong>monitoring</strong> (<a class="reference internal" href="#monitoring.monitoring.ServicesMonitoring" title="monitoring.monitoring.ServicesMonitoring"><em>ServicesMonitoring</em></a>) – monitoring where to create new Services to check</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>category</strong> (<em>String</em>) – Used during a service creation (eg: ns, infra, client1 …)</li>
+<li><strong>ingress_config</strong> (<a class="reference internal" href="#monitoring.providers.IngressProviderConfig" title="monitoring.providers.IngressProviderConfig"><em>IngressProviderConfig</em></a>) – A custom config to configure this ingress provider</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.providers.IngressProvider.dispatch_ingress_event">
+<code class="descname">dispatch_ingress_event</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProvider.dispatch_ingress_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dispatch new events</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>event</strong> (<em>yaml</em>) – Kubernetes Ingress event</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.IngressProvider.ingress_event_added">
+<code class="descname">ingress_event_added</code><span class="sig-paren">(</span><em>event</em>, <em>ns</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProvider.ingress_event_added" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Ingress Services to ServicesMonitoring</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>event</strong> (<em>yaml</em>) – Kubernetes Ingress event</li>
+<li><strong>ns</strong> (<em>String</em>) – Namespace</li>
+<li><strong>name</strong> (<em>String</em>) – Name of the ingress object</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.IngressProvider.ingress_event_deleted">
+<code class="descname">ingress_event_deleted</code><span class="sig-paren">(</span><em>event</em>, <em>ns</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProvider.ingress_event_deleted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove Ingress Services from ServicesMonitoring</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>event</strong> (<em>yaml</em>) – Kubernetes Ingress event</li>
+<li><strong>ns</strong> (<em>String</em>) – Namespace</li>
+<li><strong>name</strong> (<em>String</em>) – Name of the ingress object</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.IngressProvider.ingress_event_modified">
+<code class="descname">ingress_event_modified</code><span class="sig-paren">(</span><em>event</em>, <em>ns</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProvider.ingress_event_modified" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify Ingress Services in ServicesMonitoring</p>
+<p>In fact this is mainly a remove/re-add mecanism because we don’t have the status of the
+event before it was modified.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>event</strong> (<em>yaml</em>) – Kubernetes Ingress event</li>
+<li><strong>ns</strong> (<em>String</em>) – Namespace</li>
+<li><strong>name</strong> (<em>String</em>) – Name of the ingress object</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.IngressProvider.ingress_event_modified_remove_hook">
+<code class="descname">ingress_event_modified_remove_hook</code><span class="sig-paren">(</span><em>service</em>, <em>extra</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProvider.ingress_event_modified_remove_hook" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a Service based on extra criteria</p>
+<p>This function is called by the ServicesMonitoring as a hook of the remove_delegation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<a class="reference internal" href="#monitoring.services.IngressService" title="monitoring.services.IngressService"><em>IngressService</em></a>) – a service</li>
+<li><strong>extra</strong> (<em>dict</em>) – details about the service</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Remove the service (True) or Do NOT remove the service (False)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.IngressProvider.ingress_event_to_services">
+<code class="descname">ingress_event_to_services</code><span class="sig-paren">(</span><em>event</em>, <em>ns</em>, <em>name</em>, <em>services</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProvider.ingress_event_to_services" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform an event to an IngressService</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>event</strong> (<em>yaml</em>) – Kubernetes Ingress event</li>
+<li><strong>ns</strong> (<em>String</em>) – Namespace</li>
+<li><strong>name</strong> (<em>String</em>) – Name of the ingress object</li>
+<li><strong>services</strong> (<em>list</em>) – Add new services to this list (the return)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.IngressProvider.ingress_events">
+<code class="descname">ingress_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProvider.ingress_events" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ingress events loop</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.providers.IngressProvider.restart_timeout">
+<code class="descname">restart_timeout</code><em class="property"> = 30</em><a class="headerlink" href="#monitoring.providers.IngressProvider.restart_timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.IngressProvider.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProvider.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start a provider</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.IngressProvider.stopProvider">
+<code class="descname">stopProvider</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProvider.stopProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop a provider</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.providers.IngressProvider.watch_timeout_seconds">
+<code class="descname">watch_timeout_seconds</code><em class="property"> = 86400</em><a class="headerlink" href="#monitoring.providers.IngressProvider.watch_timeout_seconds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.providers.IngressProviderConfig">
+<em class="property">class </em><code class="descclassname">monitoring.providers.</code><code class="descname">IngressProviderConfig</code><a class="headerlink" href="#monitoring.providers.IngressProviderConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Ingress Provider Config</p>
+<p>This is a base class to configure the behavior of the IngressProvider</p>
+<dl class="method">
+<dt id="monitoring.providers.IngressProviderConfig.exclude">
+<code class="descname">exclude</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProviderConfig.exclude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exclude this url from the monitoring ?</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>url</strong> (<em>string</em>) – an url</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Yes (True) or No (False)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.IngressProviderConfig.headers">
+<code class="descname">headers</code><span class="sig-paren">(</span><em>url</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.IngressProviderConfig.headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the monitoring header for this url</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>url</strong> (<em>string</em>) – an url</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">headers needs for this url</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.providers.Provider">
+<em class="property">class </em><code class="descclassname">monitoring.providers.</code><code class="descname">Provider</code><span class="sig-paren">(</span><em>name</em>, <em>monitoring</em>, <em>category=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.Provider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>Base class for Provider implementation</p>
+<p>The provider is designed to work with a ServicesMonitoring.</p>
+<p>The class which inherit Provider need to implement:
+def stopProvider(self):
+def run(self):</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>String</em>) – unique name of the provider</li>
+<li><strong>monitoring</strong> (<a class="reference internal" href="#monitoring.monitoring.ServicesMonitoring" title="monitoring.monitoring.ServicesMonitoring"><em>ServicesMonitoring</em></a>) – monitoring where to create new Services to check</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last"><strong>category</strong> (<em>String</em>) – Used during a service creation (eg: ns, infra, client1 …)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.providers.Provider.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.Provider.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start a provider</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.Provider.services_add">
+<code class="descname">services_add</code><span class="sig-paren">(</span><em>services</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.Provider.services_add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add services</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>services</strong> (<em>list</em>) – list of Services to add</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.Provider.services_cleanup">
+<code class="descname">services_cleanup</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.Provider.services_cleanup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all services of this provider</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.Provider.services_remove">
+<code class="descname">services_remove</code><span class="sig-paren">(</span><em>services</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.Provider.services_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove services</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>services</strong> (<em>list</em>) – list of Services to remove</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.Provider.services_remove_delegation">
+<code class="descname">services_remove_delegation</code><span class="sig-paren">(</span><em>hook</em>, <em>extra</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.Provider.services_remove_delegation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove services decided by the hook function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>hook</strong> (<em>function</em>) – function that will decide to remove or not a service</li>
+<li><strong>extra</strong> (<em>object</em>) – should be an object readeable for the hook function. This permit to pass some information to the hook from the provider/service.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.providers.Provider.stopProvider">
+<code class="descname">stopProvider</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.providers.Provider.stopProvider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop a provider</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-monitoring.server">
+<span id="monitoring-server-module"></span><h2>monitoring.server module<a class="headerlink" href="#module-monitoring.server" title="Permalink to this headline">¶</a></h2>
+<p>Server module</p>
+<p>Configuring Services and Providers
+Start/Stop Monitoring</p>
+<dl class="class">
+<dt id="monitoring.server.Server">
+<em class="property">class </em><code class="descclassname">monitoring.server.</code><code class="descname">Server</code><span class="sig-paren">(</span><em>config</em>, <em>donotconfig=False</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.server.Server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Server is responsible to manage monitoring, providers and storage backend.</p>
+<p>A server is essentially composed by:
+- 1 Storage (storage backend)
+- X providers (components to add/remove/modify services on the fly)
+- X consolidations (components to consolidate some data based on uptime checks)
+- 1 ServicesMonitoring (monitoring management)</p>
+<p>A server will start/stop the Monitoring, Providers and Consolidations</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#monitoring.config.Config" title="monitoring.config.Config"><em>Config</em></a>) – Configuration</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>donotconfig</strong> (<em>bool</em>) – Force the server to NOT configure itself with providers, services … (or as a minimal setup)</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.server.Server.configure">
+<code class="descname">configure</code><span class="sig-paren">(</span><em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.server.Server.configure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure the server based on config provided</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#monitoring.config.Config" title="monitoring.config.Config"><em>Config</em></a>) – Configuration</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code> – Configuration error</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.server.Server.configure_mongostorage">
+<code class="descname">configure_mongostorage</code><span class="sig-paren">(</span><em>config</em>, <em>with_consolidation=False</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.server.Server.configure_mongostorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the storage backend with MongoStorage</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>config</strong> (<a class="reference internal" href="#monitoring.config.Config" title="monitoring.config.Config"><em>Config</em></a>) – Configuration</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>with_consolidation</strong> (<em>bool</em>) – Use default consolidation associated to MongoStorage or not.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code> – Storage is not ready or already defined.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.server.Server.exit">
+<code class="descname">exit</code><span class="sig-paren">(</span><em>code</em>, <em>msg</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.server.Server.exit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exit the program</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>code</strong> (<em>int</em>) – exit code</li>
+<li><strong>msg</strong> (<em>String</em>) – last message to display before the end of the program</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.server.Server.providers_add">
+<code class="descname">providers_add</code><span class="sig-paren">(</span><em>provider</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.server.Server.providers_add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a provider</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>provider</strong> (<a class="reference internal" href="#monitoring.providers.Provider" title="monitoring.providers.Provider"><em>Provider</em></a>) – a provider</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.server.Server.providers_remove_all">
+<code class="descname">providers_remove_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.server.Server.providers_remove_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all providers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.server.Server.running">
+<code class="descname">running</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.server.Server.running" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is running ?</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Running (True) or Not (False)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.server.Server.startMonitoring">
+<code class="descname">startMonitoring</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.server.Server.startMonitoring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the monitoring and all relative components (providers, consolidations …)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.server.Server.stopMonitoring">
+<code class="descname">stopMonitoring</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.server.Server.stopMonitoring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop the monitoring</p>
+<p>This action can be long depending what is going on (eg: consolidation in progress). We don’t force a shutdown to
+try to have a clean shutdown on all components.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.server.Server.storage_get_notify">
+<code class="descname">storage_get_notify</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.server.Server.storage_get_notify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the storage notify function</p>
+<p>Permit to get the notify function that can be used to define a Service.
+That will permit a Service to call it to notify about it status.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code> – If the storage is not defined</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.server.Server.terminate_signal">
+<code class="descname">terminate_signal</code><span class="sig-paren">(</span><em>signal</em>, <em>frame</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.server.Server.terminate_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>terminate the program on a specific signal</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-monitoring.services">
+<span id="monitoring-services-module"></span><h2>monitoring.services module<a class="headerlink" href="#module-monitoring.services" title="Permalink to this headline">¶</a></h2>
+<p>Services module</p>
+<p>Class that permit to create a Service check.</p>
+<dl class="class">
+<dt id="monitoring.services.ElasticsearchService">
+<em class="property">class </em><code class="descclassname">monitoring.services.</code><code class="descname">ElasticsearchService</code><span class="sig-paren">(</span><em>name</em>, <em>hosts</em>, <em>auth</em>, <em>port=443</em>, <em>ssl=True</em>, <em>category='infra'</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.ElasticsearchService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">monitoring.services.Service</span></code></a></p>
+<p>Elasticsearch service</p>
+<p>Elasticsearch Ping</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>string</em>) – Name</li>
+<li><strong>hosts</strong> (<em>list|string</em>) – uri or list of hosts</li>
+<li><strong>auth</strong> (<em>dict</em>) – Authentication</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>port</strong> (<em>int</em>) – connection port</li>
+<li><strong>category</strong> (<em>string</em>) – category (eg: ns, infra, client1, …)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.services.ElasticsearchService.checkMe">
+<code class="descname">checkMe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.ElasticsearchService.checkMe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>status</strong> (<em>int</em>) – Service.FAIL or Service.OK</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>extra</strong> (<em>dict</em>) – Details about the service status reported</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Previous status, status, extra</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int, int, dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.services.IngressService">
+<em class="property">class </em><code class="descclassname">monitoring.services.</code><code class="descname">IngressService</code><span class="sig-paren">(</span><em>ns</em>, <em>name</em>, <em>url</em>, <em>timeout=None</em>, <em>category='ns'</em>, <em>headers={}</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.IngressService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">monitoring.services.Service</span></code></a></p>
+<p>Kubernetes Ingress Service</p>
+<p>This class permit to store ingress entry and will check if an URL is up or down.
+This is mainly an https check but with extra arguments like namespace and name fields of an ingress yaml</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ns</strong> (<em>string</em>) – namespace</li>
+<li><strong>name</strong> (<em>string</em>) – name</li>
+<li><strong>url</strong> (<em>string</em>) – url</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>category</strong> (<em>string</em>) – category (eg: ns, infra, client1, …)</li>
+<li><strong>headers</strong> – headers for the url</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.services.IngressService.checkMe">
+<code class="descname">checkMe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.IngressService.checkMe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>status</strong> (<em>int</em>) – Service.FAIL or Service.OK</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>extra</strong> (<em>dict</em>) – Details about the service status reported</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Previous status, status, extra</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int, int, dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.services.IngressService.timeout">
+<code class="descname">timeout</code><em class="property"> = 2</em><a class="headerlink" href="#monitoring.services.IngressService.timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.services.KubernetesService">
+<em class="property">class </em><code class="descclassname">monitoring.services.</code><code class="descname">KubernetesService</code><span class="sig-paren">(</span><em>name</em>, <em>context</em>, <em>availability</em>, <em>category='infra'</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.KubernetesService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">monitoring.services.Service</span></code></a></p>
+<p>Kubernetes Service</p>
+<p>Check the availability of masters and nodes</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>string</em>) – Name</li>
+<li><strong>context</strong> (<em>string</em>) – Context set on kube config</li>
+<li><strong>availability</strong> (<em>int</em>) – percentage of nodes that need to be up and running</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last"><strong>category</strong> (<em>string</em>) – category (eg: ns, infra, client1, …)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.services.KubernetesService.checkMe">
+<code class="descname">checkMe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.KubernetesService.checkMe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>status</strong> (<em>int</em>) – Service.FAIL or Service.OK</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>extra</strong> (<em>dict</em>) – Details about the service status reported</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Previous status, status, extra</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int, int, dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.services.MongoService">
+<em class="property">class </em><code class="descclassname">monitoring.services.</code><code class="descname">MongoService</code><span class="sig-paren">(</span><em>name</em>, <em>uri</em>, <em>timeout=None</em>, <em>category='infra'</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.MongoService" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">monitoring.services.Service</span></code></a></p>
+<p>MongoDB Service</p>
+<p>This permit to check the connectivity to MongoDB by getting server info.</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>string</em>) – Name</li>
+<li><strong>uri</strong> (<em>string</em>) – connection string</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><ul class="first last simple">
+<li><strong>timeout</strong> (<em>int</em>) – MongoDB connection timeout</li>
+<li><strong>category</strong> (<em>string</em>) – category (eg: ns, infra, client1, …)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.services.MongoService.checkMe">
+<code class="descname">checkMe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.MongoService.checkMe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>status</strong> (<em>int</em>) – Service.FAIL or Service.OK</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>extra</strong> (<em>dict</em>) – Details about the service status reported</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Previous status, status, extra</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int, int, dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.services.MongoService.timeout">
+<code class="descname">timeout</code><em class="property"> = 5000</em><a class="headerlink" href="#monitoring.services.MongoService.timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.services.Service">
+<em class="property">class </em><code class="descclassname">monitoring.services.</code><code class="descname">Service</code><span class="sig-paren">(</span><em>category</em>, <em>attempt_before_status_fail=3</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.Service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for Service implementation</p>
+<p>All derived Service of this class need to implement:</p>
+<p>def __str__(self)
+def __eq__(self, other)
+def checkMe(self)</p>
+<p>checkMe() is the main function that will permit to check the status of the service.</p>
+<p>A storage can add some specific information on the service object with the storage_* functions</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>category</strong> (<em>string</em>) – category fo the service (eg: infra, ns, client1 …)</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>attempt_before_status_fail</strong> (<em>int</em>) – Number of attempt before we set a service status to FAIL</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="monitoring.services.Service.FAIL">
+<code class="descname">FAIL</code><em class="property"> = 1</em><a class="headerlink" href="#monitoring.services.Service.FAIL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.services.Service.OK">
+<code class="descname">OK</code><em class="property"> = 0</em><a class="headerlink" href="#monitoring.services.Service.OK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monitoring.services.Service.checkMe">
+<code class="descname">checkMe</code><span class="sig-paren">(</span><em>status</em>, <em>extra=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.Service.checkMe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>status</strong> (<em>int</em>) – Service.FAIL or Service.OK</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>extra</strong> (<em>dict</em>) – Details about the service status reported</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Previous status, status, extra</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int, int, dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.services.Service.isHardFailure">
+<code class="descname">isHardFailure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.Service.isHardFailure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is hard failure ?</p>
+<p>Enforce the failure</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Still in failure after all attempts (True) or False otherwise</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.services.Service.isSoftFailure">
+<code class="descname">isSoftFailure</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.Service.isSoftFailure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is soft failure ?</p>
+<p>We are in a failure state but we still have some attempts to do</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Failure not equal or superior to the number of attempt (True), or False otherwise</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.services.Service.reset_status">
+<code class="descname">reset_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.Service.reset_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the status to an undefined one</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.services.Service.storage_add">
+<code class="descname">storage_add</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.Service.storage_add" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a value to storage</p>
+<p>Used by storage backend to add some extra information on the service itself to track it</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>key</strong> (<em>String</em>) – a dictionary key</li>
+<li><strong>value</strong> (<em>Object</em>) – an object to store on the dictionary</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.services.Service.storage_get">
+<code class="descname">storage_get</code><span class="sig-paren">(</span><em>key</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.Service.storage_get" title="Permalink to this definition">¶</a></dt>
+<dd><p>get a value from storage</p>
+<p>Used by storage backend to read a tracked value</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>String</em>) – a dictionary key</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>default</strong> (<em>None</em>) – default value to return if the key is not available</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A storage object or default if it doesn’t exist</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.services.Service.storage_remove">
+<code class="descname">storage_remove</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.services.Service.storage_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>remove a value from storage</p>
+<p>Used by storage backend to remove a tracked value</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>String</em>) – a dictionary key</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-monitoring.storage">
+<span id="monitoring-storage-module"></span><h2>monitoring.storage module<a class="headerlink" href="#module-monitoring.storage" title="Permalink to this headline">¶</a></h2>
+<p>Storage backend module</p>
+<p>Store the content of all services.</p>
+<dl class="class">
+<dt id="monitoring.storage.MongoStorage">
+<em class="property">class </em><code class="descclassname">monitoring.storage.</code><code class="descname">MongoStorage</code><span class="sig-paren">(</span><em>uri</em>, <em>db_name</em>, <em>timeout=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#monitoring.storage.Storage" title="monitoring.storage.Storage"><code class="xref py py-class docutils literal notranslate"><span class="pre">monitoring.storage.Storage</span></code></a></p>
+<p>Mongo Storage</p>
+<p>We store :
+- all services in uptime collection with the last status reported
+- all downtimes for every services in uptime_history collection</p>
+<p>We DON’T store:
+- all check status as we consider only 2 status for a service: OK and FAIL.</p>
+<p>Constructor</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>uri</strong> (<em>String</em>) – MongoDB uri with all options (ssl, auth, replicaset, etc)</li>
+<li><strong>db_name</strong> (<em>String</em>) – DB name for the backend</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last"><strong>timeout</strong> (<em>int</em>) – timeout in second to wait an answer from Mongo (default is 5s)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.isReady">
+<code class="descname">isReady</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.isReady" title="Permalink to this definition">¶</a></dt>
+<dd><p>see Storage class</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.query_exec_end_downtime">
+<code class="descname">query_exec_end_downtime</code><span class="sig-paren">(</span><em>service</em>, <em>id_svc</em>, <em>id_downtime</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.query_exec_end_downtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the DB to close a service downtime</p>
+<p>Update the status of the service and close the downtime record.
+Remove the downtime _id cache on the service object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – Service object</li>
+<li><strong>id_svc</strong> (<em>ObjectId</em>) – _id of the service</li>
+<li><strong>id_downtime</strong> (<em>ObjectId</em>) – _id of the downtime to close</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Specific usage to reset the id_downtime to None directly. see caller code.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">None</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code> – MongoDB issue</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.query_exec_find_all_downtimes">
+<code class="descname">query_exec_find_all_downtimes</code><span class="sig-paren">(</span><em>service</em>, <em>down_start_date</em>, <em>duration</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.query_exec_find_all_downtimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the DB to find all downtimes of a service in a range of time</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a><em>, </em><em>dict</em><em>, </em><em>ObjectId</em>) – Service, MongoDB Document of the service, ObjectId of the service</li>
+<li><strong>down_start_date</strong> (<em>int</em>) – epoch timestamp</li>
+<li><strong>duration</strong> (<em>int</em>) – number of seconds to check if we have downtimes since down_start_date</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">List of Documents that represent a downtime between down_start_date and down_start_date + duration</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">list</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code> – MongoDB issue</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.query_exec_find_current_downtime">
+<code class="descname">query_exec_find_current_downtime</code><span class="sig-paren">(</span><em>service</em>, <em>id_svc</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.query_exec_find_current_downtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the DB to find the current downtime of a service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – Service object</li>
+<li><strong>id_svc</strong> (<em>ObjectId</em>) – _id of the service</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict. The current downtime record for the service or No current downtime ({})</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code> – MongoDB issue</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.query_exec_find_svc">
+<code class="descname">query_exec_find_svc</code><span class="sig-paren">(</span><em>service</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.query_exec_find_svc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the DB to find a service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – a specific service</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Document of the seervice or Not available (None)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code> – MongoDB issue</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.query_exec_find_svc_by_id">
+<code class="descname">query_exec_find_svc_by_id</code><span class="sig-paren">(</span><em>id_svc</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.query_exec_find_svc_by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the DB to find a service based on id</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service</strong> (<em>ObjectId</em>) – _id of the service</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Document of the seervice or Not available (None)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code> – MongoDB issue</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.query_exec_new_downtime">
+<code class="descname">query_exec_new_downtime</code><span class="sig-paren">(</span><em>service</em>, <em>id_svc</em>, <em>extra</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.query_exec_new_downtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the DB to create a new service downtime</p>
+<p>Update the status of the service and create a new downtime record.
+Cache the downtime _id on the service object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – Service object</li>
+<li><strong>id_svc</strong> (<em>ObjectId</em>) – _id of the service</li>
+<li><strong>extra</strong> (<em>object</em>) – extra data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The current downtime _id</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">ObjectId</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code> – MongoDB issue</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.query_exec_new_svc">
+<code class="descname">query_exec_new_svc</code><span class="sig-paren">(</span><em>service</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.query_exec_new_svc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Query the DB to create a new service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – service object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">_id of the service or type(service) is not supported (None)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">ObjectId</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code> – MongoDB issue</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.stats_get_all_downtimes_svc">
+<code class="descname">stats_get_all_downtimes_svc</code><span class="sig-paren">(</span><em>service</em>, <em>start_date</em>, <em>duration</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.stats_get_all_downtimes_svc" title="Permalink to this definition">¶</a></dt>
+<dd><p>see query_exec_find_all_downtimes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.stats_get_all_svc">
+<code class="descname">stats_get_all_svc</code><span class="sig-paren">(</span><em>query={}</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.stats_get_all_svc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all services</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><strong>query</strong> (<em>dict</em>) – Filter to pass to MongoDB query</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">List of Documents that represent the content of the uptime collection</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.stats_get_svc">
+<code class="descname">stats_get_svc</code><span class="sig-paren">(</span><em>service</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.stats_get_svc" title="Permalink to this definition">¶</a></dt>
+<dd><p>see query_exec_find_svc</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.storage.MongoStorage.storage_id_downtime">
+<code class="descname">storage_id_downtime</code><em class="property"> = '_id_uptime_history'</em><a class="headerlink" href="#monitoring.storage.MongoStorage.storage_id_downtime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.storage.MongoStorage.storage_id_svc">
+<code class="descname">storage_id_svc</code><em class="property"> = '_id_uptime'</em><a class="headerlink" href="#monitoring.storage.MongoStorage.storage_id_svc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.MongoStorage.svc_all">
+<code class="descname">svc_all</code><span class="sig-paren">(</span><em>service</em>, <em>status</em>, <em>extra</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.MongoStorage.svc_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>see Storage class</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="monitoring.storage.MongoStorage.timeout">
+<code class="descname">timeout</code><em class="property"> = 5000</em><a class="headerlink" href="#monitoring.storage.MongoStorage.timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="monitoring.storage.Storage">
+<em class="property">class </em><code class="descclassname">monitoring.storage.</code><code class="descname">Storage</code><a class="headerlink" href="#monitoring.storage.Storage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for Storage implementation</p>
+<p>This class should not be instantiate as all functions are not defined.
+You need it as an helper to create your own Storage backend</p>
+<p>Your own storage backend should implement at least:</p>
+<p>def stats_get_all_svc(self, query={})
+def stats_get_svc(self, service)
+def stats_get_all_downtimes_svc(self, service, start_date, duration)</p>
+<p>but you should consider to override:</p>
+<p>def isReady(self)
+def svc_all(self, service, status)  – or any svc_* for specific management per Service type (MongoService, IngressService, …)</p>
+<dl class="method">
+<dt id="monitoring.storage.Storage.isReady">
+<code class="descname">isReady</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.isReady" title="Permalink to this definition">¶</a></dt>
+<dd><p>Storage is ready or not ?</p>
+<p>Permit to control if the storage is working and if we can use it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Success (True), Failure (False)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_day_duration">
+<code class="descname">stats_day_duration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_day_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>1 day in seconds</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Number of seconds for a day</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_first_date_of_week_number">
+<code class="descname">stats_first_date_of_week_number</code><span class="sig-paren">(</span><em>year</em>, <em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_first_date_of_week_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>First monday date of the begining of the week number</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>year</strong> (<em>int</em>) – The year</li>
+<li><strong>num</strong> (<em>int</em>) – The num of the week</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Date of the first monday of the week</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_all_daily_sla">
+<code class="descname">stats_get_all_daily_sla</code><span class="sig-paren">(</span><em>start_date</em>, <em>hook=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_all_daily_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Daily SLA for all services</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>start_date</strong> (<em>int</em>) – epoch timestamp</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>hook</strong> (<em>function</em>) – function to call for each sla computed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_all_downtimes">
+<code class="descname">stats_get_all_downtimes</code><span class="sig-paren">(</span><em>start_date</em>, <em>duration</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_all_downtimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a list of downtimes for ALL services during a defined period</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>start_date</strong> (<em>int</em>) – epoch timestamp</li>
+<li><strong>duration</strong> (<em>int</em>) – number of seconds to analyze since start_date</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_all_monthly_sla">
+<code class="descname">stats_get_all_monthly_sla</code><span class="sig-paren">(</span><em>start_date</em>, <em>hook=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_all_monthly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Monthly SLA for all services</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>start_date</strong> (<em>int</em>) – epoch timestamp</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>hook</strong> (<em>function</em>) – function to call for each sla computed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_all_sla">
+<code class="descname">stats_get_all_sla</code><span class="sig-paren">(</span><em>start_date</em>, <em>duration</em>, <em>hook=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_all_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>SLA for all services available on the backend</p>
+<p>The SLA will be calculate on the period between start_date
+and ( start_date + duration )</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start_date</strong> (<em>int</em>) – epoch timestamp</li>
+<li><strong>duration</strong> (<em>int</em>) – period of time in seconds</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last"><strong>hook</strong> (<em>function</em>) – function to call for each sla computed</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_all_status">
+<code class="descname">stats_get_all_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_all_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a status list of ALL services</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_all_status_for_ns">
+<code class="descname">stats_get_all_status_for_ns</code><span class="sig-paren">(</span><em>ns</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_all_status_for_ns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a status list of ALL services on a specific namespace</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ns</strong> (<em>String</em>) – Namespace filter</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_all_weekly_sla">
+<code class="descname">stats_get_all_weekly_sla</code><span class="sig-paren">(</span><em>start_date</em>, <em>hook=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_all_weekly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Weekly SLA for all services</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>start_date</strong> (<em>int</em>) – epoch timestamp</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>hook</strong> (<em>function</em>) – function to call for each sla computed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_all_yearly_sla">
+<code class="descname">stats_get_all_yearly_sla</code><span class="sig-paren">(</span><em>start_date</em>, <em>hook=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_all_yearly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yearly SLA for all services</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>start_date</strong> (<em>int</em>) – epoch timestamp</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>hook</strong> (<em>function</em>) – function to call for each sla computed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_svc_daily_sla">
+<code class="descname">stats_get_svc_daily_sla</code><span class="sig-paren">(</span><em>service</em>, <em>start_date</em>, <em>hook=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_svc_daily_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Daily SLA for a service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<em>object</em>) – anything supported by the backend on the function self.stats_get_all_downtimes_svc</li>
+<li><strong>start_date</strong> (<em>int</em>) – epoch timestamp</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last"><strong>hook</strong> (<em>function</em>) – function to call for each sla computed</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_svc_downtimes">
+<code class="descname">stats_get_svc_downtimes</code><span class="sig-paren">(</span><em>service</em>, <em>start_date</em>, <em>duration</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_svc_downtimes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a list of downtimes for a service during a defined period</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>service</strong> (<em>object</em>) – anything supported by the backend on the function self.stats_get_all_downtimes_svc</li>
+<li><strong>start_date</strong> (<em>int</em>) – epoch timestamp</li>
+<li><strong>duration</strong> (<em>int</em>) – number of seconds to analyze since start_date</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_svc_monthly_sla">
+<code class="descname">stats_get_svc_monthly_sla</code><span class="sig-paren">(</span><em>service</em>, <em>start_date</em>, <em>hook=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_svc_monthly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Monthly SLA for a service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<em>object</em>) – anything supported by the backend on the function self.stats_get_all_downtimes_svc</li>
+<li><strong>start_date</strong> (<em>int</em>) – epoch timestamp</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last"><strong>hook</strong> (<em>function</em>) – function to call for each sla computed</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_svc_sla">
+<code class="descname">stats_get_svc_sla</code><span class="sig-paren">(</span><em>service</em>, <em>start_date</em>, <em>duration</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_svc_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute SLA for a service during a defined period</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<em>object</em>) – anything supported by the backend on the function self.stats_get_all_downtimes_svc</li>
+<li><strong>start_date</strong> (<em>int</em>) – epoch timestamp</li>
+<li><strong>duration</strong> (<em>int</em>) – number of seconds to analyze since start_date</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An SLA number between 0 and 100. (%)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Number</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_svc_status">
+<code class="descname">stats_get_svc_status</code><span class="sig-paren">(</span><em>service</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_svc_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a status for a specific service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>service</strong> (<em>object</em>) – anything supported by the backend on the function self.stats_get_svc</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_svc_weekly_sla">
+<code class="descname">stats_get_svc_weekly_sla</code><span class="sig-paren">(</span><em>service</em>, <em>start_date</em>, <em>hook=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_svc_weekly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Weekly SLA for a service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<em>object</em>) – anything supported by the backend on the function self.stats_get_all_downtimes_svc</li>
+<li><strong>start_date</strong> (<em>int</em>) – epoch timestamp</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last"><strong>hook</strong> (<em>function</em>) – function to call for each sla computed</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_get_svc_yearly_sla">
+<code class="descname">stats_get_svc_yearly_sla</code><span class="sig-paren">(</span><em>service</em>, <em>start_date</em>, <em>hook=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_get_svc_yearly_sla" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yearly SLA for a service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<em>object</em>) – anything supported by the backend on the function self.stats_get_all_downtimes_svc</li>
+<li><strong>start_date</strong> (<em>int</em>) – epoch timestamp</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first last"><strong>hook</strong> (<em>function</em>) – function to call for each sla computed</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_month_duration">
+<code class="descname">stats_month_duration</code><span class="sig-paren">(</span><em>timestamp</em>, <em>end_date=False</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_month_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>1 month in seconds</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timestamp</strong> (<em>long</em>) – A date</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>end_date</strong> (<em>bool</em>) – The date provided is at the end of the month</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Number of seconds for the month</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_week_duration">
+<code class="descname">stats_week_duration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_week_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>1 week in seconds</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Number of seconds for a week</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_week_number_of_date">
+<code class="descname">stats_week_number_of_date</code><span class="sig-paren">(</span><em>date</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_week_number_of_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>The week number</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>date</strong> (<em>Datetime</em>) – A date</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The week number for the date</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.stats_year_duration">
+<code class="descname">stats_year_duration</code><span class="sig-paren">(</span><em>timestamp</em>, <em>end_date=False</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.stats_year_duration" title="Permalink to this definition">¶</a></dt>
+<dd><p>1 year in seconds</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>timestamp</strong> (<em>long</em>) – A date</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><strong>end_date</strong> (<em>bool</em>) – The date provided is at the end of the year</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Number of seconds for the year</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.svc_all">
+<code class="descname">svc_all</code><span class="sig-paren">(</span><em>service</em>, <em>status</em>, <em>extra</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.svc_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage the status change for the service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – Service that requested a status change</li>
+<li><strong>status</strong> (<em>int</em>) – new status</li>
+<li><strong>extra</strong> (<em>object</em>) – extra data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Success (True), Try later (False)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.svc_elasticsearch">
+<code class="descname">svc_elasticsearch</code><span class="sig-paren">(</span><em>service</em>, <em>status</em>, <em>extra</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.svc_elasticsearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage the status change for a Elasticsearch service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<a class="reference internal" href="#monitoring.services.ElasticsearchService" title="monitoring.services.ElasticsearchService"><em>ElasticsearchService</em></a>) – ES service that requested a status change</li>
+<li><strong>status</strong> (<em>int</em>) – new status</li>
+<li><strong>extra</strong> (<em>object</em>) – extra data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Success (True), Try later (False)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.svc_ingress">
+<code class="descname">svc_ingress</code><span class="sig-paren">(</span><em>service</em>, <em>status</em>, <em>extra</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.svc_ingress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage the status change for a Kubernetes Ingress service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<a class="reference internal" href="#monitoring.services.IngressService" title="monitoring.services.IngressService"><em>IngressService</em></a>) – Ingress service that requested a status change</li>
+<li><strong>status</strong> (<em>int</em>) – new status</li>
+<li><strong>extra</strong> (<em>object</em>) – extra data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Success (True), Try later (False)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.svc_kubernetes">
+<code class="descname">svc_kubernetes</code><span class="sig-paren">(</span><em>service</em>, <em>status</em>, <em>extra</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.svc_kubernetes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage the status change for a Kubernetes service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<a class="reference internal" href="#monitoring.services.KubernetesService" title="monitoring.services.KubernetesService"><em>KubernetesService</em></a>) – Kubernetes service that requested a status change</li>
+<li><strong>status</strong> (<em>int</em>) – new status</li>
+<li><strong>extra</strong> (<em>object</em>) – extra data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Success (True), Try later (False)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.svc_mongo">
+<code class="descname">svc_mongo</code><span class="sig-paren">(</span><em>service</em>, <em>status</em>, <em>extra</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.svc_mongo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manage the status change for a Mongo service</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>service</strong> (<a class="reference internal" href="#monitoring.services.MongoService" title="monitoring.services.MongoService"><em>MongoService</em></a>) – Mongo Service that requested a status change</li>
+<li><strong>status</strong> (<em>int</em>) – new status</li>
+<li><strong>extra</strong> (<em>object</em>) – extra data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Success (True), Try later (False)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="monitoring.storage.Storage.update_status">
+<code class="descname">update_status</code><span class="sig-paren">(</span><em>service</em>, <em>status</em>, <em>extra=None</em><span class="sig-paren">)</span><a class="headerlink" href="#monitoring.storage.Storage.update_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called by services when a status change is detected during a check</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>service</strong> (<a class="reference internal" href="#monitoring.services.Service" title="monitoring.services.Service"><em>Service</em></a>) – Service that requested a status update</li>
+<li><strong>status</strong> (<em>int</em>) – Service.FAIL or Service.OK</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Kweyword Arguments:</dt>
+<dd>extra (object): extra data</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Success (True), Try later (False)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-monitoring">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-monitoring" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to monitoring’s documentation!</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to monitoring’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">monitoring 1.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Yellow Pages Inc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
+    </div>
+  </body>
+</html>

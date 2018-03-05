@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='monitoring',
-    version='0.0.1',
+    version='1.0.0',
     python_requires='>=3.5',
     packages=find_packages(),
     install_requires=['kubernetes', 'pymongo', 'python-dateutil', 'requests', 'elasticsearch', 'requests-aws4auth'],
