@@ -21,7 +21,8 @@ Configure and start a Monitoring server
 from monitoring.server import Server
 from monitoring.config import Config
 
-config = Config()
+secret = Config.load_json("secret.json")
+config = Config(secret)
 
 # server
 server = Server(config, donotconfig=False)

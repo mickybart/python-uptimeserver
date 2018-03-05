@@ -18,39 +18,39 @@ config
 Permit to manage global configurations
 """
 
-from .providers import IngressProvider, IngressProviderConfig
-from .services import *
 import os
-import re
+import json
 
 class Config:
     default_env = "local"
     os_env = "UPTIME_ENV"
     
-    env = {
-        "local" : {
-            "storage" : {
-                "backend" : "MongoStorage",
-                "uri": "mongodb://localhost:27017",
-                "db": "cloud-uptime-local"
-                },
-            
-            "server" : {
-                "with_consolidation" : True
-                },
-            
-            "consolidations" : {
-                "sla" : {},
-                "status" : {
-                    "filter": {},
-                    "down_since": 600
+    secret = {
+        "env" : {
+            "local" : {
+                "storage" : {
+                    "backend" : "MongoStorage",
+                    "uri": "mongodb://localhost:27017",
+                    "db": "cloud-uptime-local"
+                    },
+                
+                "server" : {
+                    "with_consolidation" : True
+                    },
+                
+                "consolidations" : {
+                    "sla" : {},
+                    "status" : {
+                        "filter": {},
+                        "down_since": 600
+                        }
+                    },
+                
+                "monitoring": {
+                    "max_services": 15,
+                    "check_every_seconds": 60,
+                    "fast_retry_every_seconds" : 5
                     }
-                },
-            
-            "monitoring": {
-                "max_services": 15,
-                "check_every_seconds": 60,
-                "fast_retry_every_seconds" : 5
                 }
             }
         }
@@ -58,16 +58,19 @@ class Config:
     providers = []
     services = []
     
-    def __init__(self):
+    def __init__(self, secret=None):
+        if secret:
+            self.secret = secret
+        
         config_env = os.environ.get(self.os_env, self.default_env)
         print("Config: environment: %s" % config_env)
-        if config_env not in self.env.keys():
+        if config_env not in self.secret["env"].keys():
             raise Exception("Environment UPTIME_ENV=%s not set in config.py" % config_env)
         
         self.active_env = config_env
     
     def getconfig(self):
-        return self.env[self.active_env]
+        return self.secret["env"][self.active_env]
     
     def getgeneric(self, section, key, default):
         if key is not None:
@@ -96,3 +99,17 @@ class Config:
         for service in self.services:
             monitoring.add(service)
 
+    def load_json(json_file):
+        """Load JSON file
+        
+        Args:
+            json_file (str): filename of a json file
+            
+        Returns:
+            dict: content of the file
+        """
+        try:
+            with open(json_file) as f:
+                return json.load(f)
+        except FileNotFoundError:
+            return None
