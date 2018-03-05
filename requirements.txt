@@ -1,0 +1,6 @@
+kubernetes
+pymongo
+python-dateutil
+requests
+elasticsearch
+requests-aws4auth
