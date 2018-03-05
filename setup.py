@@ -14,8 +14,8 @@ setup(
     license="Apache License 2.0",
     description="Monitoring / Uptime / SLA solution for cloud services",
     long_description=open('README.rst').read(),
-    url="https://github.com/mickybart/python-atlasbroker",
-    keywords=["atlas", "mongo", "mongodb", "cloud", "kubernetes", "broker"],
+    url="https://github.com/mickybart/python-monitoring",
+    keywords=["monitoring", "ingress", "mongo", "kubernetes", "elasticsearch", "sla", "uptime"],
     classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha
