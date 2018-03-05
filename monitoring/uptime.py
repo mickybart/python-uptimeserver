@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from storage import MongoStorage
-from services import MongoService, IngressService
+from .storage import MongoStorage
+from .services import MongoService, IngressService
 import sys
 import time
-from config import Config
+from .config import Config
 
 # This file is to provide an overview about the statistic API:
 # - to calculate SLA

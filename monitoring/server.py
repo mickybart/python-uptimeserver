@@ -19,10 +19,10 @@ Configuring Services and Providers
 Start/Stop Monitoring
 """
 
-from storage import MongoStorage
-from consolidation import MongoStorageConsolidationSLA, MongoStorageConsolidationStatus
-from config import Config
-from monitoring import ServicesMonitoring
+from .storage import MongoStorage
+from .consolidation import MongoStorageConsolidationSLA, MongoStorageConsolidationStatus
+from .config import Config
+from .monitoring import ServicesMonitoring
 import signal
 import sys
 import os

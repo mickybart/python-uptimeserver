@@ -18,8 +18,8 @@ config
 Permit to manage global configurations
 """
 
-from providers import IngressProvider, IngressProviderConfig
-from services import *
+from .providers import IngressProvider, IngressProviderConfig
+from .services import *
 import os
 import re
 

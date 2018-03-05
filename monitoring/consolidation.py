@@ -20,8 +20,8 @@ The purpose is to compute stored raw data from monitoring to transform them.
 """
 
 from datetime import datetime
-from helper import DaemonHelper
-from services import Service
+from .helper import DaemonHelper
+from .services import Service
 import time
 import threading
 

@@ -18,14 +18,13 @@ Daemon
 Configure and start a Monitoring server
 """
 
-from server import Server
-from config import Config
+from monitoring.server import Server
+from monitoring.config import Config
 
-if __name__ == "__main__":
-    config = Config()
-    
-    # server
-    server = Server(config, donotconfig=False)
+config = Config()
 
-    # Start Monitoring
-    server.startMonitoring()
+# server
+server = Server(config, donotconfig=False)
+
+# Start Monitoring
+server.startMonitoring()

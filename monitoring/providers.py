@@ -22,7 +22,7 @@ The remote source can be Kubernetes (for IngressProvider), a file, an unix socke
 """
 
 from kubernetes import client, config, watch
-from services import IngressService
+from .services import IngressService
 import threading
 import time
 

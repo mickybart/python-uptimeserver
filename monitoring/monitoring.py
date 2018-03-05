@@ -16,8 +16,8 @@
 Monitoring
 """
 
-from services import Service
-from helper import DaemonHelper
+from .services import Service
+from .helper import DaemonHelper
 import threading
 import time
 from datetime import datetime
