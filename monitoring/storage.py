@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-Storage backend
+Storage backend module
 
 Store the content of all services.
 """
@@ -54,18 +54,13 @@ class Storage:
 
         Args:
             service (Service): Service that requested a status update
-            status
+            status (int): Service.FAIL or Service.OK
 
-        Kwargs:
+        Kweyword Arguments:
             extra (object): extra data
 
         Returns:
-            bool. The return code::
-
-                True -- Success
-                False -- Try later
-
-        Raises:
+            bool: Success (True), Try later (False)
 
         """
         if type(service) is MongoService:
@@ -88,10 +83,7 @@ class Storage:
             extra (object): extra data
 
         Returns:
-            bool. The return code::
-
-                True -- Success
-                False -- Try later
+            bool: Success (True), Try later (False)
 
         """
         date = datetime.today().strftime("[%Y-%m-%d %H:%M:%S]")
@@ -108,10 +100,7 @@ class Storage:
             extra (object): extra data
 
         Returns:
-            bool. The return code::
-
-                True -- Success
-                False -- Try later
+            bool: Success (True), Try later (False)
 
         """
         return self.svc_all(service, status, extra)
@@ -125,10 +114,7 @@ class Storage:
             extra (object): extra data
 
         Returns:
-            bool. The return code::
-
-                True -- Success
-                False -- Try later
+            bool: Success (True), Try later (False)
 
         """
         return self.svc_all(service, status, extra)
@@ -142,10 +128,7 @@ class Storage:
             extra (object): extra data
 
         Returns:
-            bool. The return code::
-
-                True -- Success
-                False -- Try later
+            bool: Success (True), Try later (False)
 
         """
         return self.svc_all(service, status, extra)
@@ -159,10 +142,7 @@ class Storage:
             extra (object): extra data
 
         Returns:
-            bool. The return code::
-
-                True -- Success
-                False -- Try later
+            bool: Success (True), Try later (False)
 
         """
         return self.svc_all(service, status, extra)
@@ -173,10 +153,7 @@ class Storage:
         Permit to control if the storage is working and if we can use it.
 
         Returns:
-            bool. The return code::
-
-                True -- Ready
-                False -- Something is wrong
+            bool: Success (True), Failure (False)
 
         """
         return True
@@ -184,12 +161,34 @@ class Storage:
     # STATS: Date Manipulation
     
     def stats_day_duration(self):
+        """1 day in seconds
+        
+        Returns:
+            int: Number of seconds for a day
+        """
         return timedelta(days=1).total_seconds()
     
     def stats_week_duration(self):
+        """1 week in seconds
+        
+        Returns:
+            int: Number of seconds for a week
+        """
         return timedelta(days=7).total_seconds()
     
     def stats_month_duration(self, timestamp, end_date = False):
+        """1 month in seconds
+        
+        Args:
+            timestamp (long): A date
+        
+        Keyword Arguments:
+            end_date (bool): The date provided is at the end of the month
+        
+        Returns:
+            int: Number of seconds for the month
+        """
+        
         date = datetime.fromtimestamp(timestamp)
         
         if not end_date:
@@ -200,6 +199,18 @@ class Storage:
             return (date - new_date).total_seconds()
     
     def stats_year_duration(self, timestamp, end_date = False):
+        """1 year in seconds
+        
+        Args:
+            timestamp (long): A date
+        
+        Keyword Arguments:
+            end_date (bool): The date provided is at the end of the year
+        
+        Returns:
+            int: Number of seconds for the year
+        """
+        
         date = datetime.fromtimestamp(timestamp)
         
         if not end_date:
@@ -210,10 +221,26 @@ class Storage:
             return (date - new_date).total_seconds()
         
     def stats_first_date_of_week_number(self, year, num):
-        """return the first monday date of the begining of the week number"""
+        """First monday date of the begining of the week number
+        
+        Args:
+            year (int): The year
+            num (int): The num of the week
+        
+        Returns:
+            string: Date of the first monday of the week
+        """
         return datetime.strptime(str(year) + ' ' + str(num) + ' 1', '%G %V %u')
     
     def stats_week_number_of_date(self, date):
+        """The week number
+        
+        Args:
+            date (Datetime): A date
+        
+        Returns:
+            int: The week number for the date
+        """
         return date.isocalendar()[1]
 
     # STATS API
@@ -222,15 +249,15 @@ class Storage:
     def stats_get_all_sla(self, start_date, duration, hook=None):
         """SLA for all services available on the backend
         
+        The SLA will be calculate on the period between start_date
+        and ( start_date + duration )
+        
         Args:
             start_date (int): epoch timestamp
             duration (int): period of time in seconds
             
-        Kwargs:
+        Keyword Arguments:
             hook (function): function to call for each sla computed
-
-        The SLA will be calculate on the period between start_date
-        and ( start_date + duration )
 
         """
 
@@ -247,7 +274,7 @@ class Storage:
         Args:
             start_date (int): epoch timestamp
             
-        Kwargs:
+        Keyword Arguments:
             hook (function): function to call for each sla computed
 
         """
@@ -260,7 +287,7 @@ class Storage:
         Args:
             start_date (int): epoch timestamp
             
-        Kwargs:
+        Keyword Arguments:
             hook (function): function to call for each sla computed
 
         """
@@ -273,7 +300,7 @@ class Storage:
         Args:
             start_date (int): epoch timestamp
             
-        Kwargs:
+        Keyword Arguments:
             hook (function): function to call for each sla computed
 
         """
@@ -286,7 +313,7 @@ class Storage:
         Args:
             start_date (int): epoch timestamp
             
-        Kwargs:
+        Keyword Arguments:
             hook (function): function to call for each sla computed
 
         """
@@ -300,7 +327,7 @@ class Storage:
             service (object): anything supported by the backend on the function self.stats_get_all_downtimes_svc
             start_date (int): epoch timestamp
             
-        Kwargs:
+        Keyword Arguments:
             hook (function): function to call for each sla computed
 
         """
@@ -318,7 +345,7 @@ class Storage:
             service (object): anything supported by the backend on the function self.stats_get_all_downtimes_svc
             start_date (int): epoch timestamp
             
-        Kwargs:
+        Keyword Arguments:
             hook (function): function to call for each sla computed
 
         """
@@ -336,7 +363,7 @@ class Storage:
             service (object): anything supported by the backend on the function self.stats_get_all_downtimes_svc
             start_date (int): epoch timestamp
             
-        Kwargs:
+        Keyword Arguments:
             hook (function): function to call for each sla computed
 
         """
@@ -354,7 +381,7 @@ class Storage:
             service (object): anything supported by the backend on the function self.stats_get_all_downtimes_svc
             start_date (int): epoch timestamp
             
-        Kwargs:
+        Keyword Arguments:
             hook (function): function to call for each sla computed
 
         """
@@ -399,7 +426,7 @@ class Storage:
             duration (int): number of seconds to analyze since start_date
 
         Returns:
-            Number. An SLA number between 0 and 100. (%)
+            Number: An SLA number between 0 and 100. (%)
         
         """
         downtimes = self.stats_get_all_downtimes_svc(service, start_date, duration)
@@ -462,6 +489,16 @@ class MongoStorage(Storage):
 
     We DON'T store:
     - all check status as we consider only 2 status for a service: OK and FAIL.
+    
+    Constructor
+    
+    Args:
+        uri (String): MongoDB uri with all options (ssl, auth, replicaset, etc)
+        db_name (String): DB name for the backend
+
+    Keyword Arguments:
+        timeout (int): timeout in second to wait an answer from Mongo (default is 5s)
+    
     """
     #uri = None
     #client = None
@@ -473,16 +510,6 @@ class MongoStorage(Storage):
     storage_id_downtime = "_id_uptime_history"
 
     def __init__(self, uri, db_name, timeout=None):
-        """MongoStorage constructor 
-
-        Args:
-            uri (String): MongoDB uri with all options (ssl, auth, replicaset, etc)
-            db_name (String): DB name for the backend
-
-        Kwargs:
-            timeout (int): timeout in second to wait an answer from Mongo (default is 5s)
-
-        """
         super().__init__()
         self.uri = uri
         if timeout is not None:
@@ -529,11 +556,8 @@ class MongoStorage(Storage):
             service (Service): a specific service
 
         Returns:
-            Object. The return code::
-            
-                dict -- Document of the service
-                None -- Not available
-
+            dict: Document of the seervice or Not available (None)
+        
         Raises:
             Exception: MongoDB issue
 
@@ -567,10 +591,7 @@ class MongoStorage(Storage):
             service (ObjectId): _id of the service
 
         Returns:
-            Object. The return code::
-            
-                dict -- Document of the service
-                None -- Not available
+            dict: Document of the seervice or Not available (None)
 
         Raises:
             Exception: MongoDB issue
@@ -590,10 +611,7 @@ class MongoStorage(Storage):
             service (Service): service object
 
         Returns:
-            Object. The return code::
-            
-                ObjectId -- _id of the service
-                None -- type(service) is not supported
+            ObjectId: _id of the service or type(service) is not supported (None)
 
         Raises:
             Exception: MongoDB issue
@@ -630,10 +648,7 @@ class MongoStorage(Storage):
             id_svc (ObjectId): _id of the service
 
         Returns:
-            dict. The return code::
-            
-                dict -- The current downtime record for the service
-                {} -- No current downtime
+            dict. The current downtime record for the service or No current downtime ({})
 
         Raises:
             Exception: MongoDB issue
@@ -661,9 +676,7 @@ class MongoStorage(Storage):
             extra (object): extra data
 
         Returns:
-            ObjectId. The return code::
-            
-                ObjectId -- The current downtime _id
+            ObjectId: The current downtime _id
 
         Raises:
             Exception: MongoDB issue
@@ -700,9 +713,7 @@ class MongoStorage(Storage):
             id_downtime (ObjectId): _id of the downtime to close
 
         Returns:
-            None. The return code::
-            
-                None -- Specific usage to reset the id_downtime to None directly. see caller code.
+            None: Specific usage to reset the id_downtime to None directly. see caller code.
 
         Raises:
             Exception: MongoDB issue
@@ -825,10 +836,7 @@ class MongoStorage(Storage):
             duration (int): number of seconds to check if we have downtimes since down_start_date
 
         Returns:
-            List. The return code::
-            
-                [{},{},...] -- List of Documents that represent a downtime between down_start_date and down_start_date + duration
-                [] -- No downtime
+            list: List of Documents that represent a downtime between down_start_date and down_start_date + duration
 
         Raises:
             Exception: MongoDB issue
@@ -866,15 +874,11 @@ class MongoStorage(Storage):
     def stats_get_all_svc(self, query={}):
         """Get all services
         
-        Kwargs:
+        Keyword Arguments:
             query (dict): Filter to pass to MongoDB query
 
         Returns:
-            List. The return code::
-            
-                [{},{},...] -- List of Documents that represent the content of the uptime collection
-                [] -- No service
-        
+            list: List of Documents that represent the content of the uptime collection
         """
         try:
             return self.uptime.find(query)

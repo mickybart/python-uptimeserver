@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-Providers
+Providers module
 
 Providers permit to have an automatic way to create services based on a remote source.
 The provider will add/remove/modify services on the Monitoring with hook functions.
@@ -35,22 +35,21 @@ class Provider(threading.Thread):
     def stopProvider(self):
     def run(self):
     
+    Constructor
+    
+    Args:
+        name (String): unique name of the provider
+        monitoring (ServicesMonitoring): monitoring where to create new Services to check
+        
+    Keyword Arguments:
+        category (String): Used during a service creation (eg: ns, infra, client1 ...)
+    
     """
     #name = None
     #monitoring
     #category
 
     def __init__(self, name, monitoring, category = None):
-        """Provider constructor
-        
-        Args:
-            name (String): unique name of the provider
-            monitoring (ServicesMonitoring): monitoring where to create new Services to check
-            
-        Kwargs:
-            category (String): Used during a service creation (eg: ns, infra, client1 ...)
-        
-        """
         threading.Thread.__init__(self)
         self.name = name
         self.monitoring = monitoring
@@ -94,9 +93,11 @@ class Provider(threading.Thread):
         return "Provider: " + self.name
 
     def stopProvider(self):
+        """Stop a provider"""
         print("Please implement this method !")
 
     def run(self):
+        """Start a provider"""
         print("Please implement this method !")
 
 class IngressProvider(Provider):
@@ -104,6 +105,16 @@ class IngressProvider(Provider):
     
     Permit to collect ingress events/entries to create Services to monitor.
     We are using Kubernetes in this provider.
+    
+    Constructor
+    
+    Args:
+        name (String): unique name of the provider
+        monitoring (ServicesMonitoring): monitoring where to create new Services to check
+        
+    Keyword Arguments:
+        category (String): Used during a service creation (eg: ns, infra, client1 ...)
+        ingress_config (IngressProviderConfig): A custom config to configure this ingress provider
     
     """
     #k8s = None
@@ -166,13 +177,25 @@ class IngressProvider(Provider):
                     services.append(IngressService(ns, name, url, headers=headers))
 
     def ingress_event_deleted(self, event, ns, name):
-        """Remove Ingress Services from ServicesMonitoring"""
+        """Remove Ingress Services from ServicesMonitoring
+        
+        Args:
+            event (yaml): Kubernetes Ingress event
+            ns (String): Namespace
+            name (String): Name of the ingress object
+        """
         services = []
         self.ingress_event_to_services(event, ns, name, services)
         self.services_remove(services)
     
     def ingress_event_added(self, event, ns, name):
-        """Add Ingress Services to ServicesMonitoring"""
+        """Add Ingress Services to ServicesMonitoring
+        
+        Args:
+            event (yaml): Kubernetes Ingress event
+            ns (String): Namespace
+            name (String): Name of the ingress object
+        """
         services = []
         self.ingress_event_to_services(event, ns, name, services)
         self.services_add(services)
@@ -183,6 +206,10 @@ class IngressProvider(Provider):
         In fact this is mainly a remove/re-add mecanism because we don't have the status of the
         event before it was modified.
         
+        Args:
+            event (yaml): Kubernetes Ingress event
+            ns (String): Namespace
+            name (String): Name of the ingress object
         """
         
         # extra is used to know what we need to compare/delete and to be thread-safe
@@ -198,12 +225,12 @@ class IngressProvider(Provider):
         
         This function is called by the ServicesMonitoring as a hook of the remove_delegation
         
-        Returns:
-        bool. The return code::
-            
-            True: Remove the service
-            False: Do NOT remove the service
+        Args:
+            service (IngressService): a service
+            extra (dict): details about the service
         
+        Returns:
+            bool: Remove the service (True) or Do NOT remove the service (False)
         """
         if type(service) is IngressService and service.ns == extra["ns"] and service.name == extra["name"]:
             return True
@@ -246,7 +273,7 @@ class IngressProvider(Provider):
         self.w = None
 
     def stopProvider(self):
-        """see Provider class"""
+        """Stop a provider"""
         print(str(self) + " stopping")
         if self.w is not None:
             self.w.stop()
@@ -254,7 +281,7 @@ class IngressProvider(Provider):
         self.isRunning = False
 
     def run(self):
-        """see Provider class"""
+        """Start a provider"""
         print(str(self) + " started")
         self.isRunning = True
 
@@ -271,9 +298,31 @@ class IngressProvider(Provider):
         print(str(self) + " stopped")
 
 class IngressProviderConfig:
+    """Ingress Provider Config
+    
+    This is a base class to configure the behavior of the IngressProvider
+    """
+    
     def exclude(self, url):
+        """Exclude this url from the monitoring ?
+        
+        Args:
+            url (string): an url
+            
+        Returns:
+            bool: Yes (True) or No (False)
+        
+        """
         return False
     
     def headers(self, url):
+        """Set the monitoring header for this url
+        
+        Args:
+            url (string): an url
+            
+        Returns:
+            dict: headers needs for this url
+        """
         return {}
     

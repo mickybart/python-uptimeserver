@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-Services
+Services module
 
 Class that permit to create a Service check.
 """
@@ -44,6 +44,14 @@ class Service:
     
     A storage can add some specific information on the service object with the storage_* functions
     
+    Constructor
+    
+    Args:
+        category (string): category fo the service (eg: infra, ns, client1 ...)
+    
+    Keyword Arguments:
+        attempt_before_status_fail (int): Number of attempt before we set a service status to FAIL
+    
     """
     #disabled = False
     #status = None
@@ -56,12 +64,6 @@ class Service:
     FAIL = 1
 
     def __init__(self, category, attempt_before_status_fail=3):
-        """Service constructor
-        
-        Args:
-            category (string): category fo the service (eg: infra, ns, client1 ...)
-        
-        """
         self.disabled = False
         self.status = None
         self.previous_status = None
@@ -102,11 +104,11 @@ class Service:
         Args:
             key (String): a dictionary key
             
-        Kwargs:
+        Keyword Arguments:
             default (None): default value to return if the key is not available
             
         Returns:
-        Object. A storage object or default if it doesn't exist
+            Object: A storage object or default if it doesn't exist
         
         """
         if self.storage.get(key) is None:
@@ -115,6 +117,18 @@ class Service:
             return self.storage[key]
             
     def checkMe(self, status, extra=None):
+        """Check the service
+        
+        Args:
+            status (int): Service.FAIL or Service.OK
+            
+        Keyword Arguments:
+            extra (dict): Details about the service status reported
+        
+        Returns:
+            int, int, dict: Previous status, status, extra
+        """
+        
         # failure counter
         if status == Service.FAIL:
             self.failure_counter = self.failure_counter + 1
@@ -133,12 +147,28 @@ class Service:
         return (self.previous_status, status, extra)
     
     def isSoftFailure(self):
+        """Is soft failure ?
+        
+        We are in a failure state but we still have some attempts to do
+        
+        Returns:
+            bool: Failure not equal or superior to the number of attempt (True), or False otherwise
+        """
         return self.failure_counter > 0 and not self.isHardFailure()
     
     def isHardFailure(self):
+        """Is hard failure ?
+        
+        Enforce the failure
+        
+        Returns:
+            bool: Still in failure after all attempts (True) or False otherwise
+        
+        """
         return self.failure_counter >= self.attempt_before_status_fail
     
     def reset_status(self):
+        """Reset the status to an undefined one"""
         self.status = None
 
 class IngressService(Service):
@@ -146,6 +176,17 @@ class IngressService(Service):
     
     This class permit to store ingress entry and will check if an URL is up or down.
     This is mainly an https check but with extra arguments like namespace and name fields of an ingress yaml
+    
+    Constructor
+    
+    Args:
+        ns (string): namespace
+        name (string): name
+        url (string): url
+    
+    Keyword Arguments:
+        category (string): category (eg: ns, infra, client1, ...)
+        headers: headers for the url
     
     """
     #ns = None
@@ -189,6 +230,16 @@ class MongoService(Service):
     
     This permit to check the connectivity to MongoDB by getting server info.
     
+    Constructor
+    
+    Args:
+        name (string): Name
+        uri (string): connection string
+    
+    Keyword Arguments:
+        timeout (int): MongoDB connection timeout
+        category (string): category (eg: ns, infra, client1, ...)
+    
     """
     #name = None
     #uri = None
@@ -222,6 +273,21 @@ class MongoService(Service):
         return super().checkMe(ret, extra)
 
 class KubernetesService(Service):
+    """Kubernetes Service
+    
+    Check the availability of masters and nodes
+    
+    Constructor
+    
+    Args:
+        name (string): Name
+        context (string): Context set on kube config
+        availability (int): percentage of nodes that need to be up and running
+        
+    Keyword Arguments:
+        category (string): category (eg: ns, infra, client1, ...)
+    """
+    
     #name
     #context
     #availability
@@ -263,6 +329,22 @@ class KubernetesService(Service):
         return super().checkMe(ret, extra)
     
 class ElasticsearchService(Service):
+    """Elasticsearch service
+    
+    Elasticsearch Ping
+    
+    Constructor
+    
+    Args:
+        name (string): Name
+        hosts (list|string): uri or list of hosts
+        auth (dict): Authentication
+    
+    Keyword Arguments:
+        port (int): connection port
+        category (string): category (eg: ns, infra, client1, ...)
+    
+    """
     #name
     #hosts
     #port

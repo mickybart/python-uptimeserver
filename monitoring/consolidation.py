@@ -13,10 +13,9 @@
 # limitations under the License.
 
 """
-Consolidation
+Consolidation module
 
 The purpose is to compute stored raw data from monitoring to transform them.
-
 """
 
 from datetime import datetime
@@ -30,6 +29,10 @@ class Consolidation(threading.Thread):
     
     Inherit class need to know and to work with the storage object.
     
+    Constructor
+    
+    Args:
+        storage (Storage): An instance of storage backend
     """
     
     #storage
@@ -43,9 +46,11 @@ class Consolidation(threading.Thread):
         self.stop_switch = True
         
     def run(self):
+        """Start the consolidation """
         self.stop_switch = False
     
     def stopConsolidation(self):
+        """Stop the consolidation """
         print("stopping consolidation ...")
         self.stop_switch = True
 
@@ -68,6 +73,14 @@ class ConsolidationSLA(Consolidation):
     def monthly_sla_done(self)
     
     Those functions are used to store the sla or to notify that the daily/weekly/monthly compute is done
+    
+    Constructor
+    
+    Args:
+        storage (Storage): An instance of storage backend
+        
+    Keyword Arguments:
+        waiting_seconds_between_batch (int): Number of seconds to wait between 2 workload
     
     """
     
@@ -105,21 +118,69 @@ class ConsolidationSLA(Consolidation):
     # Month manipulation assume that the day is always set to 1 or at least < 29
     
     def next_date_daily_sla(self, timestamp):
+        """Get the next day from a specific date
+        
+        Args:
+            timestamp (long): a specific date
+            
+        Returns:
+            long: The next day
+        """
         return timestamp + self.storage.stats_day_duration()
     
     def previous_date_daily_sla(self, timestamp):
+        """Get the previous day from a specific date
+        
+        Args:
+            timestamp (long): a specific date
+            
+        Returns:
+            long: The previous day
+        """
         return timestamp - self.storage.stats_day_duration()
     
     def next_date_weekly_sla(self, timestamp):
+        """Get the next week from a specific date
+        
+        Args:
+            timestamp (long): a specific date
+            
+        Returns:
+            long: The next week
+        """
         return timestamp + self.storage.stats_week_duration()
     
     def previous_date_weekly_sla(self, timestamp):
+        """Get the previous week from a specific date
+        
+        Args:
+            timestamp (long): a specific date
+            
+        Returns:
+            long: The previous week
+        """
         return timestamp - self.storage.stats_week_duration()
     
     def next_date_monthly_sla(self, timestamp):
+        """Get the next month from a specific date
+        
+        Args:
+            timestamp (long): a specific date
+            
+        Returns:
+            long: The next month
+        """
         return timestamp + self.storage.stats_month_duration(timestamp)
     
     def previous_date_monthly_sla(self, timestamp):
+        """Get the previous month from a specific date
+        
+        Args:
+            timestamp (long): a specific date
+            
+        Returns:
+            long: The previous month
+        """
         return timestamp - self.storage.stats_month_duration(timestamp, end_date=True)
         
     def compute_daily_sla(self):
@@ -186,7 +247,7 @@ class ConsolidationSLA(Consolidation):
             print("consolidation: monthly for %d [DONE]" % (self.wip_date_monthly_sla))
     
     def run(self):
-        """Starting the thread"""
+        """Compute SLA"""
         
         print("starting consolidation ...")
         
@@ -253,6 +314,21 @@ class ConsolidationSLA(Consolidation):
         print("consolidation stopped")
 
 class ConsolidationStatus(Consolidation):
+    """Base class for Status Consolidation implementation
+    
+    Inherit class need to implement compute_status(self)
+    
+    Constructor
+    
+    Args:
+        storage (Storage): An instance of storage backend
+        
+    Keyword Arguments:
+        down_time_duration (int): number of second to consider a service as really down.
+        waiting_seconds_between_batch (int): Number of seconds to wait between 2 workload
+    
+    """
+    
     #down_time_duration
     #waiting_seconds_between_batch
     
@@ -263,7 +339,7 @@ class ConsolidationStatus(Consolidation):
         self.waiting_seconds_between_batch = waiting_seconds_between_batch
     
     def run(self):
-        # update status
+        """Update services status"""
         
         print("starting consolidation status ...")
         
@@ -287,7 +363,17 @@ class ConsolidationStatus(Consolidation):
         print("consolidation status stopped")
 
 class MongoStorageConsolidationSLA(ConsolidationSLA):
-    """ SLA Consolidation with MongoStorage Backend """
+    """SLA Consolidation with MongoStorage Backend
+    
+    Constructor
+    
+    Args:
+        storage (Storage): An instance of storage backend
+        
+    Keyword Arguments:
+        waiting_seconds_between_batch (int): Number of seconds to wait between 2 workload
+    
+    """
     
     def __init__(self, storage, waiting_seconds_between_batch=300):
         super().__init__(storage, waiting_seconds_between_batch)
@@ -403,7 +489,18 @@ class MongoStorageConsolidationSLA(ConsolidationSLA):
 
 
 class MongoStorageConsolidationStatus(ConsolidationStatus):
-    """ Status Consolidation with MongoStorage Backend """
+    """Status Consolidation with MongoStorage Backend
+    
+    Constructor
+    
+    Args:
+        storage (Storage): An instance of storage backend
+        services_filter (dict): Filter which services need to expose a status
+        
+    Keyword Arguments:
+        down_time_duration (int): number of second to consider a service as really down.
+        waiting_seconds_between_batch (int): Number of seconds to wait between 2 workload
+    """
     
     def __init__(self, storage, services_filter, down_time_duration=600, waiting_seconds_between_batch=60):
         super().__init__(storage, down_time_duration, waiting_seconds_between_batch)

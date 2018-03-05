@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-Server
+Server module
 
 Configuring Services and Providers
 Start/Stop Monitoring
@@ -38,6 +38,14 @@ class Server:
     
     A server will start/stop the Monitoring, Providers and Consolidations
     
+    Constructor
+    
+    Args:
+        config (Config): Configuration
+        
+    Keyword Arguments:
+        donotconfig (bool): Force the server to NOT configure itself with providers, services ... (or as a minimal setup)
+    
     """
     #storage = None
     #monitoring = None
@@ -46,12 +54,6 @@ class Server:
     #consolidations = []
 
     def __init__(self, config, donotconfig=False):
-        """Server constructor
-        
-        Args:
-            config (Config): Configuration
-        
-        """
         self.storage = None
         self.isRunning = False
         self.providers = []
@@ -105,7 +107,7 @@ class Server:
         Args:
             config (Config): Configuration
         
-        Kwargs:
+        Keyword Arguments:
             with_consolidation (bool): Use default consolidation associated to MongoStorage or not.
             
         Raises:
@@ -151,12 +153,15 @@ class Server:
         self.providers.append(provider)
 
     def providers_remove_all(self):
-        """Remove all providers
-        """
+        """Remove all providers"""
         self.providers[:] = []
 
     def running(self):
-        """Is running ?"""
+        """Is running ?
+        
+        Returns:
+            bool: Running (True) or Not (False)
+        """
         return self.isRunning
 
     def terminate_signal(self, signal, frame):

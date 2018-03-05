@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-config
+config module
 
 Permit to manage global configurations
 """
@@ -22,6 +22,20 @@ import os
 import json
 
 class Config:
+    """Configuration for Monitoring and sub-modules
+    
+    This class can be overriden and so adapted by every compagnies to
+    set different policy about what to monitor and in which way.
+    
+    You should check this main function :
+        configure
+        
+    Constructor
+    
+    Keyword Arguments:
+        secret (json): json with all secrets and configuration used by the config.
+    """
+    
     default_env = "local"
     os_env = "UPTIME_ENV"
     
@@ -91,6 +105,14 @@ class Config:
         return self.getconfig()["consolidations"]
     
     def configure(self, server, monitoring):
+        """ Configure the server and monitoring
+        
+        eg: This is where the monitoring of services will be set.
+        
+        Args:
+            server (Server): The server
+            monitoring (ServicesMonitoring): The monitoring orchestrator
+        """
         # Providers
         for provider in self.providers:
             server.providers_add(provider)

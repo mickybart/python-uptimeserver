@@ -13,7 +13,9 @@
 # limitations under the License.
 
 """
-Monitoring
+Monitoring module
+
+Monitoring Manager, thread management etc.
 """
 
 from .services import Service
@@ -37,6 +39,14 @@ class ServicesMonitoring:
     This is thread safe and so it is possible to add/remove services from any other threads.
     It is possible to add/delete services on the fly (running state or not)
     
+    Constructor
+    
+    Keyword Arguments:
+        backend_notify (function address): Function that will be called to notify the backend of a "new" status
+        max_services (int): Number of services to check per thread
+        check_every_seconds (int): Check a service every X seconds
+        fast_retry_every_seconds (int): Fast check retry when a service is going down after X seconds
+    
     """
     #providers = dict()
     #tasks = []
@@ -46,15 +56,6 @@ class ServicesMonitoring:
     #fast_retry_every_seconds = 3
 
     def __init__(self, backend_notify = None, max_services = 10, check_every_seconds = 300, fast_retry_every_seconds = 3):
-        """ServicesMonitoring constructor
-        
-        Kwargs:
-            backend_notify (function address): Function that will be called to notify the backend of a "new" status
-            max_services (int): Number of services to check per thread
-            check_every_seconds (int): Check a service every X seconds
-            fast_retry_every_seconds (int): Fast check retry when a service is going down after X seconds
-        
-        """
         self.providers = dict()
         self.tasks = []
         self.lock = threading.Lock()
@@ -70,7 +71,7 @@ class ServicesMonitoring:
         Args:
             service (Service): a Service
         
-        Kwargs:
+        Keyword Arguments:
             provider (String): Name of the provider
         
         """
@@ -99,7 +100,7 @@ class ServicesMonitoring:
         Args:
             service (Service): a Service
         
-        Kwargs:
+        Keyword Arguments:
             provider (String): Name of the provider
         
         """
@@ -118,7 +119,7 @@ class ServicesMonitoring:
     def remove_provider(self, provider="default"):
         """Remove all services of the provider to the Monitoring
         
-        Kwargs:
+        Keyword Arguments:
             provider (String): Name of the provider
         
         """
@@ -142,7 +143,7 @@ class ServicesMonitoring:
             hook (function): function that will decide to remove or not a service
             extra (object): should be an object readeable for the hook function. This permit to pass some information to the hook from the provider/service.
         
-        Kwargs:
+        Keyword Arguments:
             provider (String): Name of the provider
         
         """
@@ -235,7 +236,15 @@ class TaskMonitoring(threading.Thread):
     
     A task is created and controlled only by the ServicesMonitoring.
     
+    Constructor
+    
+    Keyword Arguments:
+        backend_notify (function address): Function that will be called to notify the backend of a "new" status
+        max_services (int): Number of services to check per thread
+        check_every_seconds (int): Check a service every X seconds
+        fast_retry_every_seconds (int): Fast check retry when a service is going down after X seconds
     """
+    
     #backend_notify = None
     #max_services = 0
     #check_every_seconds = 300
@@ -245,17 +254,6 @@ class TaskMonitoring(threading.Thread):
     #lock = threading.Lock()
 
     def __init__(self, backend_notify = None, max_services = 10, check_every_seconds = 300, fast_retry_every_seconds = 3):
-        """TaskMonitoring constructor
-        
-        see ServicesMonitoring
-        
-        Kwargs:
-            backend_notify (function address): Function that will be called to notify the backend of a "new" status
-            max_services (int): Number of services to check per thread
-            check_every_seconds (int): Check a service every X seconds
-            fast_retry_every_seconds (int): Fast check retry when a service is going down after X seconds
-        
-        """
         threading.Thread.__init__(self)
         self.backend_notify = backend_notify
         self.max_services = max_services
@@ -272,11 +270,7 @@ class TaskMonitoring(threading.Thread):
             service (Service): a Service
             
         Returns:
-        bool. The return code::
-        
-            True: Added
-            False: Not enough room
-        
+            bool: Added (True) or Not enough room on the thread (False)
         """
         ret = False
 
@@ -296,11 +290,7 @@ class TaskMonitoring(threading.Thread):
             service (Service): a Service
             
         Returns:
-        bool. The return code::
-        
-            True: Service removed
-            False: Not found in this task
-            
+            bool: Service removed (True) or Not found (False)
         """
         ret = False
 
@@ -316,7 +306,8 @@ class TaskMonitoring(threading.Thread):
     def isEmpty(self):
         """Is empty ?
         
-        No service to check on this task. Empty queue.
+        Returns:
+            bool: Empty queue (True) or not (False)
         
         """
         return (len(self.services) == 0)
@@ -327,6 +318,14 @@ class TaskMonitoring(threading.Thread):
         self.stop_switch = True
         
     def checkService(self, service):
+        """Check a service
+        
+        Permit to check a service, to retry a check, to notify the backend of a new state, ...
+        
+        Args:
+            service (Service): a Service
+        """
+        
         previous_status, status, extra = service.checkMe()
         
         # do we need to update the backend or to recover from undetermined state (previous_status is None) ?

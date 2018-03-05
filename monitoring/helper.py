@@ -12,6 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+"""Helper module
+
+Permit to provide some dev tools
+"""
+
 import time
 
 class DaemonHelper:
@@ -26,7 +31,7 @@ class DaemonHelper:
             sleep_time (int): duration in seconds
             obj (object): object with a stop_switch bool variable
             
-        Kwargs:
+        Keyword Arguments:
             sleep_inc (int): deep sleep time in seconds
         
         """
