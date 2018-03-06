@@ -27,5 +27,5 @@ Update apis
 .. code:: bash
     
     cd gendocs
-    sphinx-apidoc -f -o . ../monitoring/
+    sphinx-apidoc -f -o . ../uptimeserver/
 

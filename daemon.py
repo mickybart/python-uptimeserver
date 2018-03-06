@@ -18,8 +18,8 @@ Daemon
 Configure and start a Monitoring server
 """
 
-from monitoring.server import Server
-from monitoring.config import Config
+from uptimeserver.server import Server
+from uptimeserver.config import Config
 
 # secret.json file example :
 # 

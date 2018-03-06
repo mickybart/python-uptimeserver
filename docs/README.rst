@@ -1,7 +1,7 @@
 Docs
 ====
 
-`Code documentation (sphinx) <https://mickybart.github.io/python-monitoring/>`__
+`Code documentation (sphinx) <https://mickybart.github.io/python-uptimeserver/>`__
 
 Local consultation
 ^^^^^^^^^^^^^^^^^^

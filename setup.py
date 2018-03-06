@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='monitoring',
+    name='uptimeserver',
     version='1.0.0',
     python_requires='>=3.5',
     packages=find_packages(),
@@ -14,7 +14,7 @@ setup(
     license="Apache License 2.0",
     description="Monitoring / Uptime / SLA solution for cloud services",
     long_description=open('README.rst').read(),
-    url="https://github.com/mickybart/python-monitoring",
+    url="https://github.com/mickybart/python-uptimeserver",
     keywords=["monitoring", "ingress", "mongo", "kubernetes", "elasticsearch", "sla", "uptime"],
     classifiers=[
         # How mature is this project? Common values are
