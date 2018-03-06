@@ -116,8 +116,8 @@ config = Config(secret)
 # Custom config ?
 # => in example below, we will add few services to monitor and a specific configuration for Ingress provider.
 #
-# from monitoring.providers import IngressProvider, IngressProviderConfig
-# from monitoring.services import *
+# from uptimeserver.providers import IngressProvider, IngressProviderConfig
+# from uptimeserver.services import *
 # import re
 # 
 # class CustomConfig(Config):
@@ -165,7 +165,7 @@ config = Config(secret)
 # config = CustomConfig(secret)
 
 # server
-server = Server(config, donotconfig=False)
+server = Server(config)
 
 # Start Monitoring
 server.startMonitoring()
