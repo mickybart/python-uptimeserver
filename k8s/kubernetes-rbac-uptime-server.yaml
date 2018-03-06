@@ -1,0 +1,27 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: ypcloud:uptime-server-admin
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - 'ingresses'
+  - 'nodes'
+  verbs:
+  - 'list'
+  - 'get'
+  - 'watch'
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: ypcloud:uptime-server
+subjects:
+  - kind: ServiceAccount
+    name: uptime-server
+    namespace: default
+roleRef:
+  kind: ClusterRole
+  name: ypcloud:uptime-server-admin
+  apiGroup: rbac.authorization.k8s.io
