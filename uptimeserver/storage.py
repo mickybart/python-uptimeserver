@@ -901,7 +901,7 @@ class MongoStorage(Storage):
                 self.uptime = None
                 self.uptime_history = None
                 self.db = None
-                self.client.close
+                self.client.close()
             except:
                 pass
     
