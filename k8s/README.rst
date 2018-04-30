@@ -12,7 +12,7 @@ Uptime Server Deployment
     kubectl create ns $NS
     
     # deployment
-    kubectl -n $NS apply -f update-server-deployment.yaml
+    kubectl -n $NS apply -f kubernetes-uptime-server-deployment.yaml
     
     # rbac role for IngressProvider or KubernetesService
     # you can setup a service account with those permission to have a dedicated service account for Uptime Server
