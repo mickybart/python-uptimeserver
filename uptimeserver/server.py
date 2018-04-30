@@ -171,8 +171,12 @@ class Server:
         #self.exit(0, "Bye !")
         os.kill(os.getpid(), 9)
 
-    def startMonitoring(self):
-        """Start the monitoring and all relative components (providers, consolidations ...)"""
+    def startMonitoring(self, nosignalhandling=False):
+        """Start the monitoring and all relative components (providers, consolidations ...)
+        
+        Keyword Arguments:
+            nosignalhandling (bool): Do not intercept terminate signal
+        """
         print("Starting ...")
         if self.monitoring is not None:
             for provider in self.providers:
@@ -182,9 +186,10 @@ class Server:
             self.monitoring.startMonitoring()
             self.isRunning = True
         
-        signal.signal(signal.SIGINT, self.terminate_signal)
-        print('Press Ctrl+C to exit')
-        signal.pause()
+        if not nosignalhandling:
+            signal.signal(signal.SIGINT, self.terminate_signal)
+            print('Press Ctrl+C to exit')
+            signal.pause()
 
     def stopMonitoring(self):
         """Stop the monitoring
