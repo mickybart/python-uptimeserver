@@ -18,7 +18,6 @@ config module
 Permit to manage global configurations
 """
 
-import os
 import json
 
 class Config:
@@ -36,36 +35,29 @@ class Config:
         secret (json): json with all secrets and configuration used by the config.
     """
     
-    default_env = "local"
-    os_env = "UPTIME_ENV"
-    
     secret = {
-        "env" : {
-            "local" : {
-                "storage" : {
-                    "backend" : "MongoStorage",
-                    "uri": "mongodb://localhost:27017",
-                    "db": "cloud-uptime-local"
-                    },
-                
-                "server" : {
-                    "with_consolidation" : True
-                    },
-                
-                "consolidations" : {
-                    "sla" : {},
-                    "status" : {
-                        "filter": {},
-                        "down_since": 600
-                        }
-                    },
-                
-                "monitoring": {
-                    "max_services": 15,
-                    "check_every_seconds": 60,
-                    "fast_retry_every_seconds" : 5
-                    }
+        "storage" : {
+            "backend" : "MongoStorage",
+            "uri": "mongodb://localhost:27017",
+            "db": "cloud-uptime-local"
+            },
+        
+        "server" : {
+            "with_consolidation" : True
+            },
+        
+        "consolidations" : {
+            "sla" : {},
+            "status" : {
+                "filter": {},
+                "down_since": 600
                 }
+            },
+        
+        "monitoring": {
+            "max_services": 15,
+            "check_every_seconds": 60,
+            "fast_retry_every_seconds" : 5
             }
         }
             
@@ -75,22 +67,12 @@ class Config:
     def __init__(self, secret=None):
         if secret:
             self.secret = secret
-        
-        config_env = os.environ.get(self.os_env, self.default_env)
-        print("Config: environment: %s" % config_env)
-        if config_env not in self.secret["env"].keys():
-            raise Exception("Environment UPTIME_ENV=%s not set in config.py" % config_env)
-        
-        self.active_env = config_env
-    
-    def getconfig(self):
-        return self.secret["env"][self.active_env]
     
     def getgeneric(self, section, key, default):
         if key is not None:
-            return self.getconfig()[section].get(key, default)
+            return self.secret[section].get(key, default)
         
-        return self.getconfig()[section]
+        return self.secret[section]
     
     def getstorage(self, key=None, default=None):
         return self.getgeneric("storage", key, default)
@@ -102,7 +84,7 @@ class Config:
         return self.getgeneric("monitoring", key, default)
     
     def getconsolidations(self):
-        return self.getconfig()["consolidations"]
+        return self.secret["consolidations"]
     
     def configure(self, server, monitoring):
         """ Configure the server and monitoring
