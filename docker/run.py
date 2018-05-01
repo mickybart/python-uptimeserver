@@ -22,32 +22,28 @@ from config import CustomConfig
 # secret.json file example :
 # 
 # {
-#     "env" : {
-#         "prod" : {
-#             "storage" : {
-#                 "backend" : "MongoStorage",
-#                 "uri": "mongodb://<backend>",
-#                 "db": "<backend database name>"
-#                 },
-#             
-#             "server" : {
-#                 "with_consolidation" : true
-#                 },
-#             
-#             "consolidations" : {
-#                 "sla" : {},
-#                 "status" : {
-#                     "filter": {"category" : "infra"},
-#                     "down_since": 600
-#                     }
-#                 },
-#             
-#             "monitoring": {
-#                 "max_services": 15,
-#                 "check_every_seconds": 60,
-#                 "fast_retry_every_seconds" : 5
-#                 }
+#     "storage" : {
+#         "backend" : "MongoStorage",
+#         "uri": "mongodb://<backend>",
+#         "db": "<backend database name>"
+#         },
+#     
+#     "server" : {
+#         "with_consolidation" : true
+#         },
+#     
+#     "consolidations" : {
+#         "sla" : {},
+#         "status" : {
+#             "filter": {"category" : "infra"},
+#             "down_since": 600
 #             }
+#         },
+#     
+#     "monitoring": {
+#         "max_services": 15,
+#         "check_every_seconds": 60,
+#         "fast_retry_every_seconds" : 5
 #         },
 #         
 #     "mongodb_clusters" : [
