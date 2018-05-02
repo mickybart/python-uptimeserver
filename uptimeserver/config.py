@@ -32,47 +32,17 @@ class Config:
         
     Constructor
     
-    Keyword Arguments:
+    Args:
         secret (json): json with all secrets and configuration used by the config.
     """
     
     kubeconfig_path = '/root/.kube/config'
     
-    secret = {
-        "storage" : {
-            "backend" : "MongoStorage",
-            "uri": "mongodb://localhost:27017",
-            "db": "cloud-uptime-local"
-            },
-        
-        "server" : {
-            "with_consolidation" : True
-            },
-        
-        "consolidations" : {
-            "sla" : {},
-            "status" : {
-                "filter": {},
-                "down_since": 600
-                }
-            },
-        
-        "monitoring": {
-            "max_services": 15,
-            "check_every_seconds": 60,
-            "fast_retry_every_seconds" : 5
-            },
-        
-        "kubeconfig": "<base64 .kube/config content>"
-
-        }
-            
     providers = []
     services = []
     
-    def __init__(self, secret=None):
-        if secret:
-            self.secret = secret
+    def __init__(self, secret):
+        self.secret = secret
     
     def getgeneric(self, section, key, default):
         if key is not None:
