@@ -98,12 +98,17 @@ from config import CustomConfig
 #         }
 #         ],
 #     
-#     "KONG_HEALTH_APIKEY" : "API key"
+#     "KONG_HEALTH_APIKEY" : "API key",
+#
+#     "kubeconfig" : "<base64 .kube/config content>"
 # }
 # 
 
 secret = CustomConfig.load_json("secret.json")
 config = CustomConfig(secret)
+
+# Write the kube config to the default location Config.kubeconfig_path
+config.writekubeconfig()
 
 # Start Monitoring
 Server(config).startMonitoring()

@@ -111,7 +111,9 @@ Of course you can use any other solution provided by your infrastructure.
             }
             ],
         
-        "KONG_HEALTH_APIKEY" : "API key"
+        "KONG_HEALTH_APIKEY" : "API key",
+        
+        "kubeconfig": "<base64 .kube/config content>"
     }
 
 Quick start
@@ -125,6 +127,9 @@ Quick start
     secret = Config.load_json("secret.json")
     
     config = Config(secret)
+    
+    # Write the kube config to the default location Config.kubeconfig_path
+    #config.writekubeconfig()
     
     Server(config).startMonitoring()
 
@@ -140,6 +145,9 @@ Quick start with only one instance active
     secret = Config.load_json("secret.json")
     
     config = Config(secret)
+    
+    # Write the kube config to the default location Config.kubeconfig_path
+    #config.writekubeconfig()
     
     # Enforce that only ONE instance will be up and running at any time.
     OneInstanceLock(Server(config)).start()
