@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-COPY kubeconfig.txt /root/.kube/config
+RUN mkdir -p /root/.kube/
 
 CMD [ "python", "-u", "./run.py" ]
 

@@ -19,6 +19,7 @@ Permit to manage global configurations
 """
 
 import json
+import base64
 
 class Config:
     """Configuration for Monitoring and sub-modules
@@ -34,6 +35,8 @@ class Config:
     Keyword Arguments:
         secret (json): json with all secrets and configuration used by the config.
     """
+    
+    kubeconfig_path = '/root/.kube/config'
     
     secret = {
         "storage" : {
@@ -58,7 +61,10 @@ class Config:
             "max_services": 15,
             "check_every_seconds": 60,
             "fast_retry_every_seconds" : 5
-            }
+            },
+        
+        "kubeconfig": "<base64 .kube/config content>"
+
         }
             
     providers = []
@@ -103,6 +109,21 @@ class Config:
         for service in self.services:
             monitoring.add(service)
 
+    def writekubeconfig(self, target=None):
+        """Write the kube file configuration
+        
+        Keyword Arguments:
+            target (str): path of the config file
+        
+        Raises:
+            Exception: Issue to decode or write the file
+        """
+        if not target:
+            target = self.kubeconfig_path
+        
+        with open(target, 'wb') as f:
+            f.write(base64.b64decode(self.secret["kubeconfig"]))
+        
     def load_json(json_file):
         """Load JSON file
         
@@ -117,3 +138,4 @@ class Config:
                 return json.load(f)
         except FileNotFoundError:
             return None
+    
