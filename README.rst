@@ -132,6 +132,22 @@ Quick start
     
     Server(config).startMonitoring()
 
+Quick start with only one instance active
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: python
+    
+    from uptimeserver.server import Server
+    from uptimeserver.config import Config
+    from uptimeserver.instances import OneInstanceLock
+    
+    secret = Config.load_json("secret.json")
+    
+    config = Config(secret)
+    
+    # Enforce that only ONE instance will be up and running at any time.
+    OneInstanceLock(Server(config)).start()
+
 Custom Config
 ^^^^^^^^^^^^^
 
