@@ -4,9 +4,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>uptimeserver package &#8212; Uptime Server 1.0.1 documentation</title>
+    <title>uptimeserver package &#8212; Uptime Server 1.1.0 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to Uptime Server’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Uptime Server 1.0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Uptime Server 1.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -49,7 +49,7 @@
 <p>Permit to manage global configurations</p>
 <dl class="class">
 <dt id="uptimeserver.config.Config">
-<em class="property">class </em><code class="descclassname">uptimeserver.config.</code><code class="descname">Config</code><span class="sig-paren">(</span><em>secret=None</em><span class="sig-paren">)</span><a class="headerlink" href="#uptimeserver.config.Config" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">uptimeserver.config.</code><code class="descname">Config</code><span class="sig-paren">(</span><em>secret</em><span class="sig-paren">)</span><a class="headerlink" href="#uptimeserver.config.Config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Configuration for Monitoring and sub-modules</p>
 <p>This class can be overriden and so adapted by every compagnies to
@@ -63,8 +63,7 @@ set different policy about what to monitor and in which way.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><strong>secret</strong> (<em>json</em>) – json with all secrets and configuration used by the config.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>secret</strong> (<em>json</em>) – json with all secrets and configuration used by the config.</td>
 </tr>
 </tbody>
 </table>
@@ -86,16 +85,6 @@ set different policy about what to monitor and in which way.</p>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="uptimeserver.config.Config.default_env">
-<code class="descname">default_env</code><em class="property"> = 'local'</em><a class="headerlink" href="#uptimeserver.config.Config.default_env" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="uptimeserver.config.Config.getconfig">
-<code class="descname">getconfig</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uptimeserver.config.Config.getconfig" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="uptimeserver.config.Config.getconsolidations">
@@ -122,6 +111,11 @@ set different policy about what to monitor and in which way.</p>
 <code class="descname">getstorage</code><span class="sig-paren">(</span><em>key=None</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#uptimeserver.config.Config.getstorage" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="attribute">
+<dt id="uptimeserver.config.Config.kubeconfig_path">
+<code class="descname">kubeconfig_path</code><em class="property"> = '/root/.kube/config'</em><a class="headerlink" href="#uptimeserver.config.Config.kubeconfig_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="uptimeserver.config.Config.load_json">
 <code class="descname">load_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uptimeserver.config.Config.load_json" title="Permalink to this definition">¶</a></dt>
@@ -141,24 +135,31 @@ set different policy about what to monitor and in which way.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="uptimeserver.config.Config.os_env">
-<code class="descname">os_env</code><em class="property"> = 'UPTIME_ENV'</em><a class="headerlink" href="#uptimeserver.config.Config.os_env" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
 <dt id="uptimeserver.config.Config.providers">
 <code class="descname">providers</code><em class="property"> = []</em><a class="headerlink" href="#uptimeserver.config.Config.providers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uptimeserver.config.Config.secret">
-<code class="descname">secret</code><em class="property"> = {'env': {'local': {'storage': {'backend': 'MongoStorage', 'uri': 'mongodb://localhost:27017', 'db': 'cloud-uptime-local'}, 'server': {'with_consolidation': True}, 'consolidations': {'sla': {}, 'status': {'filter': {}, 'down_since': 600}}, 'monitoring': {'max_services': 15, 'check_every_seconds': 60, 'fast_retry_every_seconds': 5}}}}</em><a class="headerlink" href="#uptimeserver.config.Config.secret" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="uptimeserver.config.Config.services">
 <code class="descname">services</code><em class="property"> = []</em><a class="headerlink" href="#uptimeserver.config.Config.services" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="uptimeserver.config.Config.writekubeconfig">
+<code class="descname">writekubeconfig</code><span class="sig-paren">(</span><em>target=None</em><span class="sig-paren">)</span><a class="headerlink" href="#uptimeserver.config.Config.writekubeconfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the kube file configuration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><strong>target</strong> (<em>str</em>) – path of the config file</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code> – Issue to decode or write the file</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -1243,8 +1244,17 @@ Start/Stop Monitoring</p>
 
 <dl class="method">
 <dt id="uptimeserver.server.Server.startMonitoring">
-<code class="descname">startMonitoring</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uptimeserver.server.Server.startMonitoring" title="Permalink to this definition">¶</a></dt>
+<code class="descname">startMonitoring</code><span class="sig-paren">(</span><em>nosignalhandling=False</em><span class="sig-paren">)</span><a class="headerlink" href="#uptimeserver.server.Server.startMonitoring" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the monitoring and all relative components (providers, consolidations …)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Keyword Arguments:</th></tr>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><strong>nosignalhandling</strong> (<em>bool</em>) – Do not intercept terminate signal</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -2532,12 +2542,12 @@ and ( start_date + duration )</p>
         <li class="right" >
           <a href="index.html" title="Welcome to Uptime Server’s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Uptime Server 1.0.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">Uptime Server 1.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Yellow Pages Inc.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
     </div>
   </body>
 </html>
