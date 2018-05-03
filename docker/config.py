@@ -26,7 +26,7 @@ class CustomConfig(Config):
         """
         
         # K8S Ingress
-        #config = CustomIngressProviderConfig()
+        #config = CustomIngressProviderConfig(self)
         #self.providers.append(IngressProvider("aws-k8s-ingress", self.secret["default_kubernetes_context"], monitoring, category="ns", ingress_config=config))
         #self.providers.append(IngressProvider("gce-k8s-ingress", self.secret["gce_kubernetes_context"], monitoring, category="ns", ingress_config=config))
         
@@ -45,11 +45,20 @@ class CustomConfig(Config):
         super().configure(server, monitoring)
         
 class CustomIngressProviderConfig(IngressProviderConfig):
-    """ Custom Configuration for IngressProvider """
+    """ Custom Configuration for IngressProvider
+    
+    Constructor
+    
+    Args:
+        config (Config): configuration
+    """
     
     regex_global_ypcloud = re.compile(".*ypcloud.io.*")
     regex_sites_ypcloud = re.compile(".*(aws|gce).ypcloud.io.*")
     regex_kong_ypcloud = re.compile(".*ypapi.ypcloud.io.*")
+    
+    def __init__(self, config):
+        self.config = config
     
     def exclude(self, url):
         if self.regex_sites_ypcloud.match(url) is not None or \
@@ -60,7 +69,7 @@ class CustomIngressProviderConfig(IngressProviderConfig):
     
     def headers(self, url):
         if self.regex_kong_ypcloud.match(url) is not None:
-            headers = {"apikey" : self.secret.get("KONG_HEALTH_APIKEY", "")}
+            headers = {"apikey" : self.config.secret.get("KONG_HEALTH_APIKEY", "")}
         else:
             headers = {}
         
